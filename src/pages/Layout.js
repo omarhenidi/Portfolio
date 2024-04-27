@@ -1,7 +1,5 @@
 import { Outlet, Link } from "react-router-dom";
-
 import logo from './assets/IMGS/Capture2.JPG';
-
 import './assets/CSS/main.css'
 import React, { useState } from 'react';
 
@@ -13,9 +11,7 @@ const Layout = () => {
   };
   return (
     <>
-
       <header class="header">
-
         <div class="user">
           <img src={logo} alt="Logo" />
           <h3>Omar Aly</h3>
@@ -31,7 +27,6 @@ const Layout = () => {
             <li><Link class="nava" to="/contact">Contact</Link></li>
           </ul>
         </nav>
-
       </header>
 
       <nav className="navbar navbar-expand-lg bg-light" id="menu">
@@ -76,7 +71,6 @@ const Layout = () => {
           </div>
         </div>
       </nav>
-
       <Outlet />
     </>
   )

@@ -6,7 +6,6 @@ const Home = () => {
     return (
         <>
             <header class="header">
-
                 <div class="user">
                     <img src={logo} alt="Logo" />
                     <h3>Omar Aly</h3>
@@ -20,13 +19,10 @@ const Home = () => {
                     <a href="#portfolio">portfolio</a>
                     <a href="#contact">contact</a>
                 </nav>
-
             </header>
 
             <nav class="navbar bg-transparent navbar-expand-sm">
-
                 <img src="logo5.png" alt="Logo" class="navbar-brand mr-auto" />
-
                 <button
                     class="navbar-toggler"
                     type="button"
@@ -76,11 +72,7 @@ const Home = () => {
                 </div>
             </nav>
 
-
-
-
             <section class="home" id="home">
-
                 <div class="content">
                     <h3>shaikh anas</h3>
                     <p>i am a front-end developer</p>
@@ -259,13 +251,8 @@ const Home = () => {
 
             </section>
 
-
             <div class="credits"> created by <span>mr. web designer</span> | all rights reserved </div>
-
-
         </>
-
-
     );
 
 };

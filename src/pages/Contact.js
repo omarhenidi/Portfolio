@@ -42,9 +42,6 @@ function PostForm() {
                 <button onclick="document.getElementById('myInput').value =' '" class="btnn">submit</button>
             </form>
         </section>
-
-
-
     );
 
 }

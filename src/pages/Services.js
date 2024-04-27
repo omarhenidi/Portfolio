@@ -2,9 +2,7 @@ import './assets/CSS/main.css'
 
 const Services = () => {
     return (
-
         <section class="services" id="services">
-
             <h1 class="heading"> my <span>services</span> </h1>
 
             <div class="box-container">
@@ -33,12 +31,6 @@ const Services = () => {
             </div>
 
         </section>
-
-
-
-
-
-
     )
 };
 
