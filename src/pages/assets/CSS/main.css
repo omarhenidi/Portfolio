@@ -52,7 +52,7 @@ section{
     padding:2rem;
 }
 
-.btn{
+.btnn{
     margin-top: 1rem;
     display: inline-block;
     padding:1rem 3.5rem;
@@ -60,6 +60,7 @@ section{
     font-size: 1.7rem;
     cursor: pointer;
     background: none;
+    text-decoration: none;
     color:var(--black);
     box-shadow: var(--box-shadow);
 }
@@ -78,7 +79,7 @@ section{
     box-shadow: var(--box-shadow);
 }
 
-.btn:hover{
+.btnn:hover{
     box-shadow: var(--box-shadow-inset);
     color:var(--green);
 }
@@ -186,7 +187,7 @@ section{
 
   
 
-.btn:focus {
+.btnn:focus {
     outline: none;
     box-shadow: none;
   }
@@ -443,7 +444,7 @@ section{
 .portfolio .box-container .box img{
     height: 100%;
     width: 100%;
-    object-fit: cover;
+    object-fit:contain;
 }
 
 .portfolio .box-container .box .content{

@@ -1,29 +1,100 @@
+import { useState, useEffect } from "react";
+import { Container, Row, Col } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import './assets/CSS/main.css'
 
-const Home = () => {
+import { ArrowRightCircle } from 'react-bootstrap-icons';
+import TrackVisibility from 'react-on-screen';
+
+export const Home = () => {
+    const [loopNum, setLoopNum] = useState(0);
+    const [isDeleting, setIsDeleting] = useState(false);
+    const [text, setText] = useState('');
+    const [delta, setDelta] = useState(300 - Math.random() * 100);
+    const [index, setIndex] = useState(1);
+    const toRotate = ["Web Developer", "Web Designer", "UI/UX Designer"];
+    const period = 2000;
+
+    useEffect(() => {
+        let ticker = setInterval(() => {
+            tick();
+        }, delta);
+
+        return () => { clearInterval(ticker) };
+    }, [text])
+
+    const tick = () => {
+        let i = loopNum % toRotate.length;
+        let fullText = toRotate[i];
+        let updatedText = isDeleting ? fullText.substring(0, text.length - 1) : fullText.substring(0, text.length + 1);
+
+        setText(updatedText);
+
+        if (isDeleting) {
+            setDelta(prevDelta => prevDelta / 2);
+        }
+
+        if (!isDeleting && updatedText === fullText) {
+            setIsDeleting(true);
+            setIndex(prevIndex => prevIndex - 1);
+            setDelta(period);
+        } else if (isDeleting && updatedText === '') {
+            setIsDeleting(false);
+            setLoopNum(loopNum + 1);
+            setIndex(1);
+            setDelta(500);
+        } else {
+            setIndex(prevIndex => prevIndex + 1);
+        }
+    }
+
     return (
+        // <section className="banner" id="home">
+        //   <Container>
+        //     <Row className="aligh-items-center">
+        //       <Col xs={12} md={6} xl={7}>
+        //         <TrackVisibility>
+        //           {({ isVisible }) =>
+        //           <div className={isVisible ? "animate__animated animate__fadeIn" : ""}>
+        //             <span className="tagline">Welcome to my Portfolio</span>
+        //             <h1>{`Hi! I'm Judy`} <span className="txt-rotate" dataPeriod="1000" data-rotate='[ "Web Developer", "Web Designer", "UI/UX Designer" ]'><span className="wrap">{text}</span></span></h1>
+        //               <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
+        //               <button onClick={() => console.log('connect')}>Let’s Connect <ArrowRightCircle size={25} /></button>
+        //           </div>}
+        //         </TrackVisibility>
+        //       </Col>
+        //       <Col xs={12} md={6} xl={5}>
+        //         <TrackVisibility>
+        //           {({ isVisible }) =>
+        //             <div className={isVisible ? "animate__animated animate__zoomIn" : ""}>
+        //             </div>}
+        //         </TrackVisibility>
+        //       </Col>
+        //     </Row>
+        //   </Container>
+        // </section>
+
         <section class="home" id="home">
+
             <div class="content">
                 <h3>Omar Ali</h3>
                 <p>i am a Full-Stak developer</p>
 
-                <Link class="btn" to={require("./docs/CV.pdf")} target="blank">
+                <Link class="btnn" to={require("./docs/CV.pdf")} target="blank">
                     download CV
                 </Link>
 
             </div>
 
             <div class="share">
-                <a href="https://www.facebook.com/omarhenidi" class="fab fa-facebook-f" target="_blank"></a>
-                <a href="https://twitter.com/omarhenidi" class="fab fa-twitter" target="_blank"></a>
-                <a href="https://www.instagram.com/omarhenidi" class="fab fa-instagram" target="_blank"></a>
-                <a href="https://www.linkedin.com/in/omarhenidi" class="fab fa-linkedin" target="_blank"></a>
-                <a href="https://github.com/omarhenidi" class="fab fa-github" target="_blank"></a>
+                <a href="https://www.facebook.com/profile.php?id=100010820747904" class="fab fa-facebook-f"></a>
+                <a href="https://twitter.com/omarhenedi" class="fab fa-twitter"></a>
+                <a href="https://www.instagram.com/omarhenidi/" class="fab fa-instagram"></a>
+                <a href="https://www.linkedin.com/in/omar-ali-290170209/" class="fab fa-linkedin"></a>
+                <a href="https://github.com/omarhenedi" class="fab fa-github"></a>
             </div>
 
         </section>
-    );
-};
-
+    )
+}
 export default Home;

@@ -1,4 +1,3 @@
-
 import { Link } from "react-router-dom";
 import logo from './assets/IMGS/Capture1.png';
 import './assets/CSS/main.css'
@@ -23,8 +22,6 @@ const Home = () => {
                 </nav>
 
             </header>
-
-
 
             <nav class="navbar bg-transparent navbar-expand-sm">
 
@@ -264,10 +261,6 @@ const Home = () => {
 
 
             <div class="credits"> created by <span>mr. web designer</span> | all rights reserved </div>
-
-
-
-
 
 
         </>
