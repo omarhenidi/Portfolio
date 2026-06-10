@@ -1,70 +1,54 @@
-# Getting Started with Create React App
+# Omar Henidi Portfolio
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Production portfolio for **Omar Henidi — عمر هنيدي**, Technical Director & Full Stack Engineer.
 
-## Available Scripts
+## Stack
 
-In the project directory, you can run:
+- Next.js 15 (App Router)
+- TypeScript
+- Tailwind CSS
+- Lucide React
 
-### `npm start`
+## Setup
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+```bash
+npm install
+cp .env.example .env.local
+npm run dev
+```
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## Environment variables
 
-### `npm test`
+| Variable | Required | Description |
+|----------|----------|-------------|
+| `NEXT_PUBLIC_SITE_URL` | Yes | Production URL, e.g. `https://omarhenidi.com` |
+| `NEXT_PUBLIC_GA_MEASUREMENT_ID` | Yes | Google Analytics ID |
+| `CONTACT_TO` | Yes | Contact form inbox |
+| `SMTP_HOST` | Yes | SMTP server |
+| `SMTP_PORT` | Yes | SMTP port |
+| `SMTP_USER` | Yes | SMTP username |
+| `SMTP_PASS` | Yes | Google App Password |
+| `SMTP_FROM` | Yes | Sender address |
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## Production
 
-### `npm run build`
+```bash
+npm run lint
+npm run build
+npm start
+```
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+Before deploy:
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+1. Set all env vars on your host (e.g. Vercel)
+2. Confirm `NEXT_PUBLIC_SITE_URL` matches your live domain
+3. Test the contact form after deploy
+4. Submit `/sitemap.xml` in Google Search Console
+5. Search for `Omar Henidi` and `عمر هنيدي` after indexing — structured data links your site and social profiles
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## Features
 
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+- SEO: metadata, Open Graph, Twitter cards, JSON-LD
+- Dynamic sitemap, robots.txt, and web manifest
+- Contact form with validation, honeypot, and rate limiting
+- Security headers in production

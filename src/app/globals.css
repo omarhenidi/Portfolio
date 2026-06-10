@@ -1,0 +1,169 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-background text-on-surface font-body antialiased;
+  }
+
+  @media (min-width: 768px) {
+    body.has-custom-cursor {
+      cursor: none;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+
+    body.has-custom-cursor {
+      cursor: auto;
+    }
+
+    .hero-title-reveal span,
+    .reveal-on-scroll {
+      animation: none !important;
+      opacity: 1 !important;
+      transform: none !important;
+      filter: none !important;
+      transition: none !important;
+    }
+  }
+}
+
+@layer components {
+  .nav-link {
+    @apply relative;
+  }
+
+  .nav-link::after {
+    content: "";
+    @apply absolute -bottom-1 left-0 h-px w-0 bg-primary transition-all duration-300;
+  }
+
+  .nav-link:hover::after {
+    @apply w-full;
+  }
+
+  .hero-title-reveal span {
+    @apply inline-block opacity-0 blur-[10px];
+    transform: translateY(20px);
+    animation: reveal 0.8s forwards;
+  }
+
+  .reveal-on-scroll {
+    @apply translate-y-[30px] opacity-0 transition-all duration-[800ms];
+    transition-timing-function: cubic-bezier(0.22, 1, 0.36, 1);
+  }
+
+  .reveal-on-scroll.active {
+    @apply translate-y-0 opacity-100;
+  }
+
+  .parallax-grid {
+    background-image:
+      linear-gradient(#334155 1px, transparent 1px),
+      linear-gradient(90deg, #334155 1px, transparent 1px);
+    background-size: 64px 64px;
+    transform: perspective(1000px) rotateX(45deg);
+  }
+
+  .bento-card:hover .card-img {
+    @apply scale-105;
+  }
+
+  .project-card:hover .project-image {
+    @apply scale-105;
+  }
+
+  .form-underline {
+    @apply relative;
+  }
+
+  .form-underline::after {
+    content: "";
+    @apply absolute bottom-0 left-0 h-px w-full bg-outline-variant transition-colors duration-300;
+  }
+
+  .form-underline:focus-within::after {
+    @apply bg-primary-container;
+  }
+
+  .gradient-button {
+    background: linear-gradient(90deg, #38bdf8 0%, #8ed5ff 100%);
+  }
+
+  .timeline-line {
+    @apply w-px;
+    background: linear-gradient(to bottom, transparent, #334155 10%, #334155 90%, transparent);
+  }
+
+  .nav-link-item {
+    transition:
+      transform 0.5s cubic-bezier(0.19, 1, 0.22, 1),
+      opacity 0.3s ease;
+  }
+
+  .nav-link-item:hover {
+    transform: translateY(-4px);
+  }
+
+  .nav-link-item:hover .link-text {
+    @apply text-primary;
+  }
+
+  .nav-link-item:hover .link-number {
+    @apply text-primary-container opacity-100;
+  }
+
+  .line-animation {
+    @apply h-0.5 w-0 bg-primary transition-all duration-[600ms];
+    transition-timing-function: cubic-bezier(0.19, 1, 0.22, 1);
+  }
+
+  .nav-link-item:hover .line-animation {
+    @apply w-[100px];
+  }
+
+  .bento-card-bordered {
+    @apply border border-[#334155] transition-colors duration-300;
+  }
+
+  .bento-card-bordered:hover {
+    @apply border-primary-container;
+  }
+
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+
+  .no-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+}
+
+@keyframes reveal {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+    filter: blur(0);
+  }
+}
+
+@keyframes fadeSlideIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

@@ -1,0 +1,72 @@
+import type { Config } from "tailwindcss";
+
+const config: Config = {
+  content: ["./src/**/*.{js,ts,jsx,tsx,mdx}"],
+  theme: {
+    extend: {
+      colors: {
+        background: "#0f1418",
+        surface: "#0f1418",
+        "surface-dim": "#0f1418",
+        "surface-bright": "#343a3e",
+        "surface-container-lowest": "#0a0f12",
+        "surface-container-low": "#171c20",
+        "surface-container": "#1b2024",
+        "surface-container-high": "#252b2e",
+        "surface-container-highest": "#303539",
+        "surface-variant": "#303539",
+        "on-surface": "#dee3e8",
+        "on-surface-variant": "#bdc8d1",
+        "on-background": "#dee3e8",
+        outline: "#87929a",
+        "outline-variant": "#3e484f",
+        primary: "#8ed5ff",
+        "on-primary": "#00354a",
+        "primary-container": "#38bdf8",
+        "on-primary-container": "#004965",
+        secondary: "#bdc2ff",
+        "on-secondary": "#131e8c",
+        "secondary-container": "#2f3aa3",
+        "on-secondary-container": "#a8afff",
+        tertiary: "#4ee6aa",
+        "on-tertiary": "#003825",
+        "tertiary-container": "#22c990",
+        "on-tertiary-container": "#004e35",
+        "hero-band": "#020617",
+        "philosophy-light": "#F8FAFC",
+      },
+      spacing: {
+        "stack-sm": "8px",
+        "stack-md": "16px",
+        "stack-lg": "32px",
+        gutter: "32px",
+        "margin-desktop": "64px",
+        "section-padding-mobile": "80px",
+        "section-padding-desktop": "160px",
+      },
+      fontFamily: {
+        display: ["var(--font-playfair)", "serif"],
+        body: ["var(--font-inter)", "sans-serif"],
+        ui: ["var(--font-space-grotesk)", "sans-serif"],
+        mono: ["var(--font-jetbrains-mono)", "monospace"],
+      },
+      fontSize: {
+        "display-xl": ["96px", { lineHeight: "1.1", letterSpacing: "-0.02em", fontWeight: "700" }],
+        "display-lg": ["64px", { lineHeight: "1.2", letterSpacing: "-0.01em", fontWeight: "600" }],
+        "display-lg-mobile": ["40px", { lineHeight: "1.2", fontWeight: "600" }],
+        "headline-md": ["32px", { lineHeight: "1.3", fontWeight: "500" }],
+        "body-lg": ["18px", { lineHeight: "1.7", fontWeight: "400" }],
+        "body-md": ["16px", { lineHeight: "1.6", fontWeight: "400" }],
+        "ui-label": ["14px", { lineHeight: "1", letterSpacing: "0.05em", fontWeight: "500" }],
+        "tech-tag": ["13px", { lineHeight: "1", letterSpacing: "-0.01em", fontWeight: "400" }],
+      },
+      borderRadius: {
+        DEFAULT: "0px",
+        lg: "0px",
+        xl: "0px",
+      },
+    },
+  },
+};
+
+export default config;
