@@ -32,15 +32,26 @@ npm run dev
 
 ## Production
 
+### Static hosting (cPanel, nginx, Apache)
+
 ```bash
-npm run lint
 npm run build
+```
+
+This creates an **`out/`** folder with **`out/index.html`**. Upload the entire `out/` folder to your web server.
+
+On static hosting, the contact form opens the visitor's email app.
+
+### Node / Vercel (SMTP contact form)
+
+```bash
+npm run build:server
 npm start
 ```
 
 Before deploy:
 
-1. Set all env vars on your host (e.g. Vercel)
+1. Set all env vars on your host (e.g. Vercel) when using `build:server`
 2. Confirm `NEXT_PUBLIC_SITE_URL` matches your live domain
 3. Test the contact form after deploy
 4. Submit `/sitemap.xml` in Google Search Console

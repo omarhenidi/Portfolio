@@ -6,6 +6,8 @@ import { SITE } from "@/lib/constants";
 
 type FormStatus = "idle" | "sending" | "sent" | "error";
 
+const isStaticExport = process.env.NEXT_PUBLIC_STATIC_EXPORT === "true";
+
 export default function ContactForm() {
   const [status, setStatus] = useState<FormStatus>("idle");
   const [statusMessage, setStatusMessage] = useState("");
@@ -20,6 +22,20 @@ export default function ContactForm() {
     const company = String(formData.get("company") ?? "").trim();
 
     if (!name || !email || !message) return;
+
+    if (isStaticExport) {
+      const subject = encodeURIComponent(`Portfolio inquiry from ${name}`);
+      const body = encodeURIComponent(`Name: ${name}\nEmail: ${email}\n\n${message}`);
+      window.location.href = `mailto:${SITE.email}?subject=${subject}&body=${body}`;
+      setStatus("sent");
+      setStatusMessage("Opening your email app to send the message.");
+      form.reset();
+      setTimeout(() => {
+        setStatus("idle");
+        setStatusMessage("");
+      }, 5000);
+      return;
+    }
 
     setStatus("sending");
     setStatusMessage("Sending your message…");

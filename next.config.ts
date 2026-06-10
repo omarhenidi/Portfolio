@@ -1,5 +1,7 @@
 import type { NextConfig } from "next";
 
+const isStaticExport = process.env.BUILD_STATIC === "true";
+
 const securityHeaders = [
   { key: "X-DNS-Prefetch-Control", value: "on" },
   { key: "X-Frame-Options", value: "SAMEORIGIN" },
@@ -15,14 +17,30 @@ const securityHeaders = [
 ];
 
 const nextConfig: NextConfig = {
-  async headers() {
-    return [
-      {
-        source: "/(.*)",
-        headers: securityHeaders,
-      },
-    ];
+  ...(isStaticExport
+    ? {
+        output: "export",
+        trailingSlash: true,
+      }
+    : {}),
+  images: {
+    unoptimized: isStaticExport,
   },
+  env: {
+    NEXT_PUBLIC_STATIC_EXPORT: isStaticExport ? "true" : "false",
+  },
+  ...(!isStaticExport
+    ? {
+        async headers() {
+          return [
+            {
+              source: "/(.*)",
+              headers: securityHeaders,
+            },
+          ];
+        },
+      }
+    : {}),
 };
 
 export default nextConfig;
