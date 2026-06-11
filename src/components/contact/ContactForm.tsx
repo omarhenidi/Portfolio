@@ -152,12 +152,15 @@ export default function ContactForm() {
         </button>
         <p
           className={`mt-4 font-body text-body-md ${
-            status === "error" ? "text-primary" : "text-on-surface-variant"
+            status === "error" ? "text-secondary" : "text-on-surface-variant"
           }`}
           aria-live="polite"
           role="status"
         >
-          {statusMessage || `Messages are delivered directly to ${SITE.email}.`}
+          {statusMessage ||
+            (isStaticExport
+              ? `Submit opens your email app — messages go to ${SITE.email}.`
+              : `Messages are delivered directly to ${SITE.email}.`)}
         </p>
       </div>
     </form>

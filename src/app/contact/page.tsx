@@ -5,7 +5,7 @@ import { SITE, SOCIAL_LINKS } from "@/lib/constants";
 import { buildPageMetadata } from "@/lib/seo";
 
 export const metadata: Metadata = buildPageMetadata({
-  title: "Contact | Omar Henidi - عمر هنيدي",
+  title: `Contact ${SITE.name} (${SITE.nameAr})`,
   description:
     "Get in touch with Omar Henidi (عمر هنيدي) for full stack engineering, technical direction, and engineering leadership projects in Cairo and worldwide.",
   path: "/contact",
@@ -13,8 +13,8 @@ export const metadata: Metadata = buildPageMetadata({
 
 export default function ContactPage() {
   return (
-    <main>
-      <section className="px-6 pb-stack-lg pt-section-padding-mobile md:px-margin-desktop md:pt-section-padding-desktop">
+    <main className="pt-20 md:pt-24">
+      <section className="px-6 pb-stack-lg md:px-margin-desktop">
         <h1 className="mb-stack-lg font-display text-[72px] leading-none text-on-surface md:text-display-xl">
           Contact
         </h1>
@@ -102,7 +102,7 @@ export default function ContactPage() {
 
       <section className="relative flex h-64 items-center justify-center overflow-hidden border-t border-outline-variant">
         <div className="relative z-10 text-center">
-          <span className="font-ui text-ui-label uppercase tracking-[0.5em] text-outline">
+          <span className="font-ui text-ui-label uppercase tracking-[0.35em] text-on-surface-variant/50 md:tracking-[0.5em]">
             Precision Matters
           </span>
         </div>

@@ -13,6 +13,8 @@ import {
   identityGraphJsonLd,
   siteUrl,
 } from "@/lib/seo";
+
+const googleSiteVerification = process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION?.trim();
 import "./globals.css";
 
 const playfair = Playfair_Display({
@@ -46,6 +48,9 @@ export const metadata: Metadata = {
     description: defaultDescription,
     path: "/",
   }),
+  ...(googleSiteVerification
+    ? { verification: { google: googleSiteVerification } }
+    : {}),
   title: {
     default: defaultTitle,
     template: `%s`,

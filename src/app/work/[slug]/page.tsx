@@ -5,7 +5,8 @@ import JsonLd from "@/components/seo/JsonLd";
 import { ProjectFooter } from "@/components/layout/Footer";
 import Icon from "@/components/ui/Icon";
 import TechTag from "@/components/ui/TechTag";
-import { getAdjacentProjects, getProject, projects } from "@/lib/projects";
+import { SITE } from "@/lib/constants";
+import { getAdjacentProjects, getProject, getProjectImageBackground, projects } from "@/lib/projects";
 import { breadcrumbJsonLd, buildPageMetadata, creativeWorkJsonLd } from "@/lib/seo";
 
 export function generateStaticParams() {
@@ -18,7 +19,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   if (!project) return { title: "Project Not Found" };
 
   return buildPageMetadata({
-    title: `${project.title} | Omar Henidi - عمر هنيدي`,
+    title: `${project.title} | ${SITE.name} (${SITE.nameAr})`,
     description: project.description,
     path: `/work/${project.slug}`,
     image: project.image,
@@ -38,6 +39,12 @@ export default async function ProjectDetailPage({ params }: ProjectDetailPagePro
   const { prev, next } = getAdjacentProjects(slug);
   const stack = project.stack ?? project.tags;
   const imageFit = project.imageFit ?? "cover";
+  const liveSites: { label: string; url: string }[] =
+    project.sites ??
+    [
+      project.demoUrl ? { label: "Live Demo", url: project.demoUrl } : null,
+      project.adminDemoUrl ? { label: "Admin Dashboard", url: project.adminDemoUrl } : null,
+    ].filter((site): site is { label: string; url: string } => site !== null);
   const metaItems = [
     project.role && { label: "Role", value: project.role },
     project.timeline && { label: "Timeline", value: project.timeline },
@@ -60,8 +67,8 @@ export default async function ProjectDetailPage({ params }: ProjectDetailPagePro
 
       <section className="mb-stack-lg w-full px-6 md:px-margin-desktop">
         <div
-          className="group relative aspect-[21/9] w-full overflow-hidden bg-surface-container-low"
-          style={project.imageBackground ? { backgroundColor: project.imageBackground } : undefined}
+          className="group relative aspect-[16/9] w-full overflow-hidden md:aspect-[21/9]"
+          style={{ backgroundColor: getProjectImageBackground(project) }}
         >
           <Image
             src={project.image}
@@ -80,7 +87,9 @@ export default async function ProjectDetailPage({ params }: ProjectDetailPagePro
 
       <section className="mb-section-padding-mobile px-6 md:mb-section-padding-desktop md:px-margin-desktop">
         <div className="mx-auto max-w-7xl border-b border-outline-variant pb-stack-lg">
-          <h1 className="mb-stack-md font-display text-display-xl text-on-surface">{project.title}</h1>
+          <h1 className="mb-stack-md font-display text-[72px] leading-none text-on-surface md:text-display-xl">
+            {project.title}
+          </h1>
           <div className="flex flex-wrap items-center gap-x-12 gap-y-4 font-ui text-ui-label uppercase tracking-widest text-on-surface-variant">
             {metaItems.map(({ label, value }) => (
               <div key={label} className="flex items-center gap-2">
@@ -94,7 +103,7 @@ export default async function ProjectDetailPage({ params }: ProjectDetailPagePro
 
       <section className="mb-section-padding-mobile px-6 md:mb-section-padding-desktop md:px-margin-desktop">
         <div className="mx-auto grid max-w-7xl grid-cols-12 gap-gutter">
-          <div className="col-span-12 space-y-section-padding-mobile lg:col-span-8">
+          <div className="col-span-12 space-y-stack-lg md:space-y-section-padding-mobile lg:col-span-8">
             <article>
               <h2 className="mb-stack-lg font-display text-headline-md text-on-surface">Overview</h2>
               <div className="max-w-3xl space-y-stack-md font-body text-body-lg text-on-surface-variant">
@@ -129,12 +138,29 @@ export default async function ProjectDetailPage({ params }: ProjectDetailPagePro
             {project.results && (
               <article>
                 <h2 className="mb-stack-lg font-display text-headline-md text-on-surface">Key Results</h2>
-                <div className="grid grid-cols-2 gap-gutter md:grid-cols-3">
+                <div className="grid grid-cols-1 gap-gutter sm:grid-cols-2 md:grid-cols-3">
                   {project.results.map(({ value, label }) => (
                     <div key={label} className="border-l-2 border-primary py-2 pl-6">
                       <div className="font-display text-display-lg text-primary">{value}</div>
                       <div className="font-ui text-ui-label uppercase text-on-surface-variant">{label}</div>
                     </div>
+                  ))}
+                </div>
+              </article>
+            )}
+
+            {project.dashboardFeatures && (
+              <article>
+                <h2 className="mb-stack-lg font-display text-headline-md text-on-surface">
+                  Dashboard Modules
+                </h2>
+                <p className="mb-stack-lg max-w-3xl font-body text-body-md text-on-surface-variant">
+                  The admin dashboard covers end-to-end operations across sourcing, sales, logistics,
+                  CRM, and team coordination.
+                </p>
+                <div className="flex flex-wrap gap-2">
+                  {project.dashboardFeatures.map((feature) => (
+                    <TechTag key={feature}>{feature}</TechTag>
                   ))}
                 </div>
               </article>
@@ -154,17 +180,18 @@ export default async function ProjectDetailPage({ params }: ProjectDetailPagePro
                 </div>
               </div>
 
-              {(project.demoUrl || project.repoUrl) && (
+              {(liveSites.length > 0 || project.privateSites?.length || project.repoUrl) && (
                 <div className="flex flex-col gap-stack-sm">
-                  {project.demoUrl && (
+                  {liveSites.map(({ label, url }) => (
                     <a
-                      href={project.demoUrl}
+                      key={url}
+                      href={url}
                       target="_blank"
                       rel="noopener noreferrer"
                       className="group flex items-center justify-between border border-outline px-6 py-4 transition-all duration-300 hover:border-primary-container hover:bg-primary-container"
                     >
                       <span className="font-ui text-ui-label uppercase tracking-widest text-on-surface transition-colors group-hover:text-on-primary-container">
-                        Live Demo
+                        {label}
                       </span>
                       <Icon
                         name="open_in_new"
@@ -172,7 +199,22 @@ export default async function ProjectDetailPage({ params }: ProjectDetailPagePro
                         className="text-primary transition-colors group-hover:text-on-primary-container"
                       />
                     </a>
-                  )}
+                  ))}
+                  {project.privateSites?.map(({ label }) => (
+                    <div
+                      key={label}
+                      aria-disabled="true"
+                      title="Private — authentication required"
+                      className="flex cursor-not-allowed items-center justify-between border border-outline-variant bg-surface-container-high px-6 py-4 opacity-60"
+                    >
+                      <span className="font-ui text-ui-label uppercase tracking-widest text-on-surface-variant">
+                        {label}
+                      </span>
+                      <span className="font-mono text-[10px] uppercase tracking-widest text-on-surface-variant">
+                        Private
+                      </span>
+                    </div>
+                  ))}
                   {project.repoUrl && (
                     <a
                       href={project.repoUrl}

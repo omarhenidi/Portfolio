@@ -1,0 +1,15 @@
+/* TEAM */
+Developer: Omar Henidi (عمر هنيدي)
+Role: Technical Director & Full Stack Engineer
+Location: Cairo, Egypt
+Site: https://omarhenidi.com
+Contact: omarhenidi@gmail.com
+
+/* SOCIAL */
+LinkedIn: https://www.linkedin.com/in/omarhenidi
+GitHub: https://github.com/omarhenidi
+X: https://x.com/omarhenidi
+Instagram: https://www.instagram.com/omarhenidi
+
+/* THANKS */
+Built with Next.js, TypeScript, and Tailwind CSS.

@@ -44,7 +44,7 @@ export default function Navigation({ onMenuOpen }: NavigationProps) {
         <div className="flex items-center justify-end gap-3 md:col-start-3 md:gap-4">
           <Link
             href="/contact"
-            className="gradient-button whitespace-nowrap px-5 py-2.5 font-ui text-ui-label uppercase tracking-widest text-on-primary transition-all duration-300 hover:opacity-90 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary-container md:px-6 md:py-3"
+            className="gradient-button whitespace-nowrap px-4 py-2 font-ui text-[12px] uppercase tracking-widest text-on-primary transition-all duration-300 hover:opacity-90 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary-container sm:px-5 sm:py-2.5 sm:text-ui-label md:px-6 md:py-3"
           >
             Let&apos;s Talk
           </Link>

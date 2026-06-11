@@ -118,10 +118,6 @@
     @apply text-primary;
   }
 
-  .nav-link-item:hover .link-number {
-    @apply text-primary-container opacity-100;
-  }
-
   .line-animation {
     @apply h-0.5 w-0 bg-primary transition-all duration-[600ms];
     transition-timing-function: cubic-bezier(0.19, 1, 0.22, 1);
@@ -137,6 +133,10 @@
 
   .bento-card-bordered:hover {
     @apply border-primary-container;
+  }
+
+  .stack-pillar:hover {
+    @apply bg-surface-container;
   }
 
   .no-scrollbar::-webkit-scrollbar {

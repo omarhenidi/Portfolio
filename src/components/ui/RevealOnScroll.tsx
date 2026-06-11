@@ -15,6 +15,11 @@ export default function RevealOnScroll({ children, className = "", delay = 0 }: 
     const el = ref.current;
     if (!el) return;
 
+    if (!("IntersectionObserver" in window)) {
+      el.classList.add("active");
+      return;
+    }
+
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {

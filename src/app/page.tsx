@@ -5,6 +5,7 @@ import Footer from "@/components/layout/Footer";
 import HeroTitle from "@/components/ui/HeroTitle";
 import Icon from "@/components/ui/Icon";
 import ProjectCard from "@/components/ui/ProjectCard";
+import TechnicalFoundation from "@/components/home/TechnicalFoundation";
 import RevealOnScroll from "@/components/ui/RevealOnScroll";
 import { SITE } from "@/lib/constants";
 import { buildPageMetadata } from "@/lib/seo";
@@ -19,7 +20,7 @@ export const metadata: Metadata = buildPageMetadata({
 export default function HomePage() {
   return (
     <main>
-      <section className="relative flex h-screen w-full items-center overflow-hidden bg-hero-band px-6 md:px-margin-desktop">
+      <section className="relative flex min-h-[calc(100dvh-4rem)] w-full items-center overflow-hidden bg-hero-band px-6 pt-20 md:min-h-screen md:px-margin-desktop md:pt-0">
         <ParallaxGrid />
         <div className="relative z-10 grid w-full grid-cols-12">
           <div className="col-span-12 flex flex-col justify-center md:col-span-8">
@@ -114,40 +115,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      <section className="overflow-hidden bg-surface-container-lowest px-6 py-section-padding-mobile md:px-margin-desktop md:py-section-padding-desktop">
-        <div className="grid grid-cols-12 items-center gap-gutter">
-          <RevealOnScroll className="col-span-12 md:col-span-6">
-            <h2 className="mb-stack-md font-display text-display-lg text-on-surface">
-              Technical Foundation
-            </h2>
-            <div className="mb-stack-lg space-y-stack-md">
-              {[
-                { label: "Frameworks", value: "React, Next.js, TypeScript" },
-                { label: "Styling", value: "Tailwind, CSS Modules, SCSS" },
-                { label: "Backend", value: "PHP Laravel, MySQL" },
-              ].map(({ label, value }) => (
-                <div key={label} className="flex justify-between border-b border-outline-variant pb-4">
-                  <span className="font-ui uppercase text-on-surface">{label}</span>
-                  <span className="font-mono text-on-surface-variant">{value}</span>
-                </div>
-              ))}
-            </div>
-          </RevealOnScroll>
-          <RevealOnScroll className="col-span-12 md:col-span-6" delay={300}>
-            <div className="relative flex aspect-square w-full flex-col justify-center border border-outline-variant p-stack-lg">
-              <p className="mb-stack-md font-ui text-ui-label uppercase tracking-widest text-primary">
-                Core Stack
-              </p>
-              <ul className="space-y-stack-sm font-mono text-tech-tag text-on-surface-variant">
-                <li>React · Next.js · TypeScript</li>
-                <li>PHP Laravel · MySQL</li>
-                <li>Tailwind · Design Systems</li>
-                <li>Technical Direction · Team Leadership</li>
-              </ul>
-            </div>
-          </RevealOnScroll>
-        </div>
-      </section>
+      <TechnicalFoundation />
 
       <Footer variant="home" />
     </main>

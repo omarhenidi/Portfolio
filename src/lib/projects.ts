@@ -16,6 +16,10 @@ export type Project = {
   timeline?: string;
   status?: string;
   demoUrl?: string;
+  adminDemoUrl?: string;
+  sites?: { label: string; url: string }[];
+  privateSites?: { label: string }[];
+  dashboardFeatures?: string[];
   repoUrl?: string;
   overview?: string[];
   architecture?: { icon: IconName; title: string; description: string }[];
@@ -23,7 +27,72 @@ export type Project = {
   stack?: string[];
 };
 
+export const DEFAULT_IMAGE_BACKGROUND = "#ffffff";
+
+export function getProjectImageBackground(project: Project): string {
+  return project.imageBackground ?? DEFAULT_IMAGE_BACKGROUND;
+}
+
 export const projects: Project[] = [
+  {
+    slug: "maat",
+    title: "MAAT Group",
+    category: "Sourcing / Logistics / SaaS",
+    filters: ["SaaS"],
+    description:
+      "End-to-end import platform for sourcing, quality control, and logistics — with a public consumer site and a full admin dashboard for operations.",
+    shortDescription:
+      "Import-from-China platform with consumer site and admin dashboard for sourcing, QC, and logistics.",
+    tags: ["Next.js", "Laravel", "MySQL"],
+    image: "/images/projects/maat.png",
+    imageFit: "contain",
+    imageBackground: "#ffffff",
+    role: "Technical Director & Full Stack Engineer",
+    timeline: "2024 — Present",
+    status: "Live Release",
+    sites: [{ label: "Consumer Site", url: "https://maat.vip/" }],
+    privateSites: [{ label: "Admin Dashboard" }],
+    dashboardFeatures: [
+      "Dashboard",
+      "Products",
+      "Quotations",
+      "Orders",
+      "Transfers",
+      "Clients",
+      "Suppliers",
+      "Admins",
+      "Tasks",
+      "Inquiries",
+      "Blogs",
+      "Appointments",
+      "Calendar",
+    ],
+    overview: [
+      "MAAT Group is a dual-platform product for global import operations — connecting businesses with reliable suppliers in China through sourcing, quality control, and end-to-end logistics. The consumer site at maat.vip guides clients from idea to delivery with transparent cost estimation and import workflows.",
+      "A secure, role-based admin dashboard powers internal operations: product catalogs, quotations, order and transfer management, client and supplier CRM, task tracking, inquiries, content publishing, and appointment scheduling with calendar views.",
+      "As Technical Director, I led full stack delivery across both surfaces — unified Laravel APIs, role-based admin access, and a consumer experience optimized for trust, clarity, and conversion in cross-border trade.",
+    ],
+    architecture: [
+      {
+        icon: "hub",
+        title: "Consumer Platform",
+        description:
+          "Public-facing site for import services, cost estimation, supplier discovery, and client onboarding — built for international audiences with multilingual support.",
+      },
+      {
+        icon: "memory",
+        title: "Admin Dashboard",
+        description:
+          "Operations hub with modular access to products, quotations, orders, transfers, CRM, tasks, inquiries, blogs, appointments, and calendar management.",
+      },
+    ],
+    results: [
+      { value: "1k+", label: "Worldwide Clients" },
+      { value: "13", label: "Dashboard Modules" },
+      { value: "2", label: "Live Platforms" },
+    ],
+    stack: ["Next.js", "Laravel", "MySQL", "TypeScript", "Tailwind CSS", "REST APIs"],
+  },
   {
     slug: "lookfindr",
     title: "Lookfindr",
@@ -36,10 +105,13 @@ export const projects: Project[] = [
     tags: ["Next.js", "Laravel", "MySQL"],
     image: "/images/projects/lookfindr.png",
     imageFit: "contain",
-    imageBackground: "#ffffff",
     role: "Team Lead",
     timeline: "2023 — 2025",
     status: "Live Release",
+    sites: [
+      { label: "Landing Page", url: "https://lookfindr.com/" },
+      { label: "CRM", url: "https://app.lookfindr.com/" },
+    ],
     overview: [
       "Lookfindr is a next-generation visual discovery platform designed for architectural curation. By leveraging proprietary computer vision models, the platform allows architects and designers to search through vast spatial databases using only visual semantics, bypassing traditional tagging limitations.",
       "As the Team Lead, I oversaw the end-to-end development of the core interface and search orchestration layer, ensuring a seamless bridge between complex data visualization and high-end editorial aesthetics.",
@@ -87,7 +159,7 @@ export const projects: Project[] = [
     tags: ["Next.js", "Laravel", "MySQL"],
     image: "/images/projects/ibdl.jpg",
     imageFit: "contain",
-    imageBackground: "#ffffff",
+    sites: [{ label: "Live Site", url: "https://ibdl.net/" }],
   },
   {
     slug: "shopisonic",
@@ -99,7 +171,7 @@ export const projects: Project[] = [
     tags: ["React", "Laravel", "MySQL"],
     image: "/images/projects/shopisonic.png",
     imageFit: "contain",
-    imageBackground: "#ffffff",
+    sites: [{ label: "Live Site", url: "https://shopisonic.com/" }],
   },
   {
     slug: "shuaa-alamal",
@@ -111,7 +183,7 @@ export const projects: Project[] = [
     tags: ["Next.js", "Laravel", "MySQL"],
     image: "/images/projects/shuaa-alamal.png",
     imageFit: "contain",
-    imageBackground: "#ffffff",
+    sites: [{ label: "Live Site", url: "https://www.shuaa-alamal.com/" }],
   },
   {
     slug: "gefires",
@@ -123,19 +195,19 @@ export const projects: Project[] = [
     tags: ["React", "Laravel", "MySQL"],
     image: "/images/projects/gefires.png",
     imageFit: "contain",
-    imageBackground: "#000000",
+    sites: [{ label: "Live Site", url: "https://gefires.com/" }],
   },
   {
     slug: "order",
     title: "Order",
-    category: "Logistics / SaaS",
-    filters: ["SaaS"],
+    category: "E-commerce",
+    filters: ["E-commerce"],
     description:
-      "B2B logistics platform streamlining inventory management and global shipping routes through automated workflows.",
+      "E-commerce platform with product catalog, cart, checkout, and order management for online retail.",
     tags: ["Next.js", "Laravel", "MySQL"],
     image: "/images/projects/order.png",
     imageFit: "contain",
-    imageBackground: "#000000",
+    sites: [{ label: "Live Site", url: "https://www.orderfs.com/" }],
   },
   {
     slug: "tamweel-misr",
@@ -148,6 +220,7 @@ export const projects: Project[] = [
     image: "/images/projects/tamweel-misr.png",
     imageFit: "contain",
     imageBackground: "#000000",
+    sites: [{ label: "Products", url: "https://easwaaqmisr.com/products/" }],
   },
 ];
 
@@ -181,7 +254,7 @@ export const experience = [
 ];
 
 export const stats = [
-  { value: "8", label: "Projects Delivered" },
+  { value: "9", label: "Projects Delivered" },
   { value: "4+", label: "Years Experience" },
   { value: "2", label: "Teams Led" },
   { value: "MENA", label: "Expertise" },

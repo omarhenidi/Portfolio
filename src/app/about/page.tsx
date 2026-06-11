@@ -70,9 +70,11 @@ export default function AboutPage() {
             {stats.map(({ value, label }) => (
               <div
                 key={label}
-                className="flex flex-col items-center border border-outline-variant/30 p-stack-lg text-center"
+                className="flex flex-col items-center border border-outline-variant/30 p-stack-md text-center md:p-stack-lg"
               >
-                <span className="mb-2 font-display text-display-lg text-primary">{value}</span>
+                <span className="mb-2 font-display text-display-lg-mobile text-primary md:text-display-lg">
+                  {value}
+                </span>
                 <span className="font-ui text-ui-label uppercase tracking-widest text-on-surface-variant">
                   {label}
                 </span>
@@ -84,32 +86,48 @@ export default function AboutPage() {
 
       <section className="relative px-6 py-section-padding-mobile md:px-margin-desktop md:py-section-padding-desktop">
         <div className="mx-auto max-w-4xl">
-          <h2 className="mb-24 text-center font-display text-headline-md">Professional Journey</h2>
+          <h2 className="mb-16 text-center font-display text-headline-md md:mb-24">
+            Professional Journey
+          </h2>
           <div className="relative">
-            <div className="timeline-line absolute left-1/2 h-full -translate-x-1/2" />
-            <div className="flex flex-col gap-32">
+            <div className="timeline-line absolute left-4 hidden h-full md:left-1/2 md:block md:-translate-x-1/2" />
+            <div className="flex flex-col gap-12 md:gap-32">
               {experience.map(({ company, role, period, current }, index) => (
-                <div
-                  key={company}
-                  className={`group relative flex w-full items-center justify-between ${
-                    index % 2 === 1 ? "flex-row-reverse" : ""
-                  }`}
-                >
+                <div key={company} className="group relative md:flex md:w-full md:items-center md:justify-between">
+                  {/* Mobile */}
+                  <div className="relative border-l border-outline-variant pl-8 md:hidden">
+                    <div
+                      className={`absolute -left-[5px] top-1.5 rounded-full border-background ${
+                        current
+                          ? "h-3 w-3 border-[3px] bg-primary"
+                          : "h-2.5 w-2.5 border-2 bg-outline-variant"
+                      }`}
+                    />
+                    <span className="mb-2 block font-ui text-ui-label text-primary">{period}</span>
+                    <h3 className="mb-1 font-ui text-headline-md text-on-surface">{company}</h3>
+                    <p className="font-body text-body-md text-on-surface-variant">{role}</p>
+                  </div>
+
+                  {/* Desktop */}
                   <div
-                    className={`w-[45%] opacity-0 transition-opacity duration-500 group-hover:opacity-100 ${
+                    className={`hidden w-[45%] opacity-0 transition-opacity duration-500 group-hover:opacity-100 md:block ${
                       index % 2 === 1 ? "pl-stack-lg text-left" : "pr-stack-lg text-right"
                     }`}
                   >
                     <span className="font-ui text-ui-label text-primary">{period}</span>
                   </div>
                   <div
-                    className={`absolute left-1/2 z-10 -translate-x-1/2 rounded-full border-background ${
+                    className={`absolute left-1/2 z-10 hidden -translate-x-1/2 rounded-full border-background md:block ${
                       current
                         ? "h-4 w-4 border-4 bg-primary"
                         : "h-3 w-3 border-2 bg-outline-variant group-hover:bg-primary"
                     }`}
                   />
-                  <div className={`w-[45%] ${index % 2 === 1 ? "pr-stack-lg text-right" : "pl-stack-lg"}`}>
+                  <div
+                    className={`hidden w-[45%] md:block ${
+                      index % 2 === 1 ? "pr-stack-lg text-right" : "pl-stack-lg"
+                    }`}
+                  >
                     <h3 className="mb-1 font-ui text-headline-md text-on-surface">{company}</h3>
                     <p className="font-body text-body-md text-on-surface-variant">{role}</p>
                   </div>
@@ -169,7 +187,7 @@ export default function AboutPage() {
               <h2 className="font-display text-headline-md">Education</h2>
             </div>
             <div className="md:col-span-8">
-              <div className="border border-outline-variant bg-surface-container-lowest p-12 transition-colors duration-500 hover:border-primary">
+              <div className="border border-outline-variant bg-surface-container-lowest p-6 transition-colors duration-500 hover:border-primary md:p-12">
                 <div className="mb-6 flex flex-col items-start justify-between md:flex-row md:items-center">
                   <h3 className="font-display text-headline-md text-on-surface">Sinai University</h3>
                   <span className="font-ui text-ui-label uppercase tracking-widest text-on-surface-variant">

@@ -2,7 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import Icon from "@/components/ui/Icon";
 import TechTag from "@/components/ui/TechTag";
-import type { Project } from "@/lib/projects";
+import { getProjectImageBackground, type Project } from "@/lib/projects";
 
 type ProjectCardProps = {
   project: Project;
@@ -10,6 +10,7 @@ type ProjectCardProps = {
 };
 
 export default function ProjectCard({ project, variant = "grid" }: ProjectCardProps) {
+  const imageBackground = getProjectImageBackground(project);
   const imageFit = project.imageFit ?? "cover";
   const imageClass =
     imageFit === "contain"
@@ -27,8 +28,8 @@ export default function ProjectCard({ project, variant = "grid" }: ProjectCardPr
         className="bento-card group overflow-hidden border border-outline-variant bg-surface-container-low"
       >
         <div
-          className="aspect-video overflow-hidden border-b border-outline-variant bg-surface-container-low"
-          style={project.imageBackground ? { backgroundColor: project.imageBackground } : undefined}
+          className="aspect-video overflow-hidden border-b border-outline-variant"
+          style={{ backgroundColor: imageBackground }}
         >
           <Image
             src={project.image}
@@ -63,11 +64,11 @@ export default function ProjectCard({ project, variant = "grid" }: ProjectCardPr
   return (
     <Link
       href={`/work/${project.slug}`}
-      className="project-card group flex flex-col gap-stack-md border-outline-variant p-stack-lg md:border-b md:border-r"
+      className="project-card group flex flex-col gap-stack-md border-b border-outline-variant p-stack-lg md:border-r"
     >
       <div
-        className="aspect-[16/10] overflow-hidden border border-outline-variant bg-surface-container-low"
-        style={project.imageBackground ? { backgroundColor: project.imageBackground } : undefined}
+        className="aspect-[16/10] overflow-hidden border border-outline-variant"
+        style={{ backgroundColor: imageBackground }}
       >
         <Image
           src={project.image}
@@ -88,7 +89,7 @@ export default function ProjectCard({ project, variant = "grid" }: ProjectCardPr
         </div>
         <h3 className="font-display text-headline-md">{project.title}</h3>
         <p className="line-clamp-2 font-body text-body-md text-on-surface-variant">{project.description}</p>
-        <div className="mt-2 flex gap-2">
+        <div className="mt-2 flex flex-wrap gap-2">
           {project.tags.map((tag) => (
             <span
               key={tag}

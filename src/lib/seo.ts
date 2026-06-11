@@ -42,6 +42,14 @@ export function absoluteUrl(path = "/"): string {
   return new URL(path, siteUrl).toString();
 }
 
+/** Canonical page URL with trailing slash (matches static export). */
+export function absolutePageUrl(path = "/"): string {
+  const normalized = path.startsWith("/") ? path : `/${path}`;
+  const withSlash =
+    normalized === "/" ? "/" : normalized.endsWith("/") ? normalized : `${normalized}/`;
+  return new URL(withSlash, siteUrl).toString();
+}
+
 export function buildPageMetadata({
   title,
   description = defaultDescription,
@@ -55,7 +63,7 @@ export function buildPageMetadata({
   image?: string;
   noIndex?: boolean;
 }): Metadata {
-  const url = absoluteUrl(path);
+  const url = absolutePageUrl(path);
   const imageUrl = absoluteUrl(image);
 
   return {
@@ -232,7 +240,7 @@ export function breadcrumbJsonLd(items: { name: string; path: string }[]) {
       "@type": "ListItem",
       position: index + 1,
       name: item.name,
-      item: absoluteUrl(item.path),
+      item: absolutePageUrl(item.path),
     })),
   };
 }
@@ -249,7 +257,7 @@ export function creativeWorkJsonLd(project: {
     "@type": "CreativeWork",
     name: project.title,
     description: project.description,
-    url: absoluteUrl(`/work/${project.slug}`),
+    url: absolutePageUrl(`/work/${project.slug}`),
     image: project.image.startsWith("http") ? project.image : absoluteUrl(project.image),
     author: {
       "@type": "Person",

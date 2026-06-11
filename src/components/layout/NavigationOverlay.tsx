@@ -50,7 +50,7 @@ export default function NavigationOverlay({ open, onClose }: NavigationOverlayPr
           className="flex w-full max-w-2xl flex-col items-center gap-stack-lg text-center"
           aria-label="Mobile navigation"
         >
-          {MENU_LINKS.map(({ number, label, href, external }, index) => {
+          {MENU_LINKS.map(({ label, href, external }, index) => {
             const className =
               "nav-link-item group flex flex-col items-center gap-2 opacity-0 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-primary-container";
             const style = {
@@ -58,9 +58,6 @@ export default function NavigationOverlay({ open, onClose }: NavigationOverlayPr
             };
             const content = (
               <>
-                <span className="link-number font-ui text-ui-label text-outline opacity-40 transition-all duration-300">
-                  {number}
-                </span>
                 <span className="link-text font-display text-display-lg-mobile uppercase tracking-tighter text-on-surface md:text-display-xl">
                   {label}
                 </span>

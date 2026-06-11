@@ -41,15 +41,14 @@ export const NAV_LINKS = [
 ] as const;
 
 export const MENU_LINKS: {
-  number: string;
   label: string;
   href: string;
   external?: boolean;
 }[] = [
-  { number: "01", label: "Work", href: "/work" },
-  { number: "02", label: "About", href: "/about" },
-  { number: "03", label: "Contact", href: "/contact" },
-  { number: "04", label: "Resume", href: SITE.resumeUrl, external: true },
+  { label: "Work", href: "/work" },
+  { label: "About", href: "/about" },
+  { label: "Contact", href: "/contact" },
+  { label: "Resume", href: SITE.resumeUrl, external: true },
 ];
 
 export const WORK_FILTERS = [

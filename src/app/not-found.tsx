@@ -1,9 +1,10 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { SITE } from "@/lib/constants";
 import { buildPageMetadata } from "@/lib/seo";
 
 export const metadata: Metadata = buildPageMetadata({
-  title: "Page Not Found | Omar Henidi - عمر هنيدي",
+  title: `Page Not Found | ${SITE.name}`,
   description: "The page you are looking for could not be found.",
   path: "/404",
   noIndex: true,

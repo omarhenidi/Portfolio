@@ -14,7 +14,7 @@ export default function WorkGrid() {
   return (
     <>
       <section
-        className="mb-section-padding-mobile overflow-x-auto px-6 no-scrollbar md:mb-section-padding-desktop md:px-margin-desktop"
+        className="mb-section-padding-mobile overflow-x-auto px-6 md:mb-section-padding-desktop md:px-margin-desktop md:no-scrollbar"
         aria-label="Project filters"
       >
         <div className="flex gap-stack-lg whitespace-nowrap border-b border-outline-variant pb-stack-md" role="tablist">

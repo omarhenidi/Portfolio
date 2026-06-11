@@ -78,7 +78,7 @@ export default function Footer({ variant = "default" }: FooterProps) {
             </div>
           </div>
         </div>
-        <div className="flex flex-col items-center justify-between border-t border-outline-variant pt-stack-md opacity-40 md:flex-row">
+        <div className="flex flex-col items-center justify-between gap-2 border-t border-outline-variant pt-stack-md md:flex-row">
           <p className="font-ui text-xs uppercase tracking-widest text-on-surface-variant">
             © {CURRENT_YEAR} {SITE.name} — All Rights Reserved
           </p>
@@ -101,7 +101,7 @@ export default function Footer({ variant = "default" }: FooterProps) {
                 key={label}
                 label={label}
                 href={href}
-                className="font-ui text-ui-label uppercase text-on-surface-variant transition-all duration-300 hover:scale-105 hover:text-primary"
+                className="font-ui text-ui-label uppercase text-on-surface-variant transition-colors duration-300 hover:text-primary"
               />
             ))}
           </div>
@@ -153,11 +153,13 @@ export function ContactFooter() {
             ))}
           </div>
         </div>
-        <div className="text-right">
+        <div className="text-left md:text-right">
           <p className="mb-4 font-display text-display-lg-mobile leading-none text-tertiary md:text-display-lg">
             Let&apos;s Create.
           </p>
-          <p className="font-ui text-ui-label text-on-surface-variant opacity-50">© {CURRENT_YEAR} {SITE.name}</p>
+          <p className="font-ui text-ui-label text-on-surface-variant opacity-70">
+            © {CURRENT_YEAR} {SITE.name}
+          </p>
         </div>
       </div>
     </footer>

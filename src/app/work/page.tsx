@@ -8,7 +8,7 @@ import { SITE } from "@/lib/constants";
 import { buildPageMetadata, breadcrumbJsonLd } from "@/lib/seo";
 
 export const metadata: Metadata = buildPageMetadata({
-  title: "Work | Omar Henidi - عمر هنيدي",
+  title: `Work | ${SITE.name} (${SITE.nameAr})`,
   description:
     "Selected projects by Omar Henidi (عمر هنيدي) — SaaS, e-commerce, fintech, and EdTech products built with full stack engineering and technical leadership.",
   path: "/work",
@@ -16,7 +16,7 @@ export const metadata: Metadata = buildPageMetadata({
 
 export default function WorkPage() {
   return (
-    <main className="pt-20 md:pt-section-padding-mobile lg:pt-section-padding-desktop">
+    <main className="pt-20 md:pt-24">
       <JsonLd
         data={breadcrumbJsonLd([
           { name: "Home", path: "/" },
@@ -24,7 +24,7 @@ export default function WorkPage() {
         ])}
       />
       <section className="mb-stack-lg px-6 md:px-margin-desktop">
-        <h1 className="max-w-4xl font-display text-display-xl">Work</h1>
+        <h1 className="max-w-4xl font-display text-[72px] leading-none md:text-display-xl">Work</h1>
         <p className="mt-stack-md max-w-2xl font-body text-body-lg text-on-surface-variant">
           Case studies and product work across SaaS, commerce, fintech, and education — engineered
           for clarity, performance, and scale.
@@ -34,7 +34,7 @@ export default function WorkPage() {
       <WorkGrid />
 
       <section className="mt-section-padding-mobile border-t border-outline-variant bg-surface-container-lowest px-6 py-section-padding-mobile md:mt-section-padding-desktop md:px-margin-desktop md:py-section-padding-desktop">
-        <div className="flex flex-col items-end justify-between gap-stack-lg md:flex-row">
+        <div className="flex flex-col items-start justify-between gap-stack-lg md:flex-row md:items-end">
           <div className="max-w-2xl">
             <span className="mb-4 block font-ui text-ui-label uppercase tracking-widest text-primary">
               Next Steps
