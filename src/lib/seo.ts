@@ -10,14 +10,37 @@ export const personId = `${siteUrl}/#person`;
 export const websiteId = `${siteUrl}/#website`;
 export const profilePageId = `${siteUrl}/#profile`;
 
-export const sameAsProfiles = [siteUrl, ...SITE.socialProfiles];
+export function absoluteUrl(path = "/"): string {
+  return new URL(path, siteUrl).toString();
+}
+
+/** Canonical page URL with trailing slash (matches static export). */
+export function absolutePageUrl(path = "/"): string {
+  const normalized = path.startsWith("/") ? path : `/${path}`;
+  const withSlash =
+    normalized === "/" ? "/" : normalized.endsWith("/") ? normalized : `${normalized}/`;
+  return new URL(withSlash, siteUrl).toString();
+}
+
+export const sameAsProfiles = [absolutePageUrl("/"), ...SITE.personSameAs];
+
+/** Person schema for `<head>` JSON-LD. */
+export function personHeadJsonLd() {
+  return {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    name: SITE.name,
+    url: absolutePageUrl("/"),
+    sameAs: [...SITE.personSameAs],
+  };
+}
 
 export const defaultKeywords = [
   SITE.name,
   SITE.nameAr,
   ...SITE.alternateNames,
-  "Omar Henidi portfolio",
-  "عمر هنيدي portfolio",
+  "Omar Henidi",
+  "عمر هنيدي",
   "Omar Henidi LinkedIn",
   "Omar Henidi GitHub",
   "Omar Henidi Instagram",
@@ -37,18 +60,6 @@ export const defaultKeywords = [
   "Egypt",
   "MENA",
 ];
-
-export function absoluteUrl(path = "/"): string {
-  return new URL(path, siteUrl).toString();
-}
-
-/** Canonical page URL with trailing slash (matches static export). */
-export function absolutePageUrl(path = "/"): string {
-  const normalized = path.startsWith("/") ? path : `/${path}`;
-  const withSlash =
-    normalized === "/" ? "/" : normalized.endsWith("/") ? normalized : `${normalized}/`;
-  return new URL(withSlash, siteUrl).toString();
-}
 
 export function buildPageMetadata({
   title,
@@ -139,7 +150,7 @@ export function identityGraphJsonLd() {
           addressLocality: "Cairo",
           addressCountry: "EG",
         },
-        sameAs: sameAsProfiles,
+        sameAs: [...SITE.personSameAs],
         knowsAbout: [
           "Full Stack Engineering",
           "Technical Direction",
@@ -200,7 +211,7 @@ export function personJsonLd() {
       addressLocality: "Cairo",
       addressCountry: "EG",
     },
-    sameAs: sameAsProfiles,
+    sameAs: [...SITE.personSameAs],
     knowsAbout: [
       "Full Stack Engineering",
       "Technical Direction",
@@ -211,24 +222,6 @@ export function personJsonLd() {
       "MySQL",
       "Engineering Leadership",
     ],
-  };
-}
-
-export function websiteJsonLd() {
-  return {
-    "@context": "https://schema.org",
-    "@type": "WebSite",
-    "@id": websiteId,
-    name: defaultTitle,
-    url: siteUrl,
-    description: defaultDescription,
-    inLanguage: ["en", "ar"],
-    publisher: { "@id": personId },
-    author: {
-      "@type": "Person",
-      "@id": personId,
-      name: SITE.name,
-    },
   };
 }
 

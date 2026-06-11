@@ -6,26 +6,22 @@
     "node": ">=18.18.0"
   },
   "scripts": {
-    "clean": "rm -rf .next out .api-build-backup",
+    "clean": "rm -rf .next out",
     "dev": "node scripts/ensure-dev-cache.mjs && next dev --turbopack",
-    "dev:webpack": "node scripts/ensure-dev-cache.mjs && next dev",
     "dev:clean": "npm run clean && next dev --turbopack",
     "build": "node scripts/build-static.mjs",
-    "build:server": "next build",
     "start": "next start",
     "lint": "next lint"
   },
   "dependencies": {
     "lucide-react": "^1.17.0",
     "next": "^15.3.3",
-    "nodemailer": "^8.0.10",
     "react": "^19.1.0",
     "react-dom": "^19.1.0"
   },
   "devDependencies": {
     "@eslint/eslintrc": "^3.3.1",
     "@types/node": "^22.15.21",
-    "@types/nodemailer": "^8.0.0",
     "@types/react": "^19.1.6",
     "@types/react-dom": "^19.1.5",
     "autoprefixer": "^10.4.21",

@@ -15,6 +15,13 @@ export const SITE = {
   givenName: "Omar",
   familyName: "Henidi",
   alternateNames: ["عمر هنيدي", "Omar Henidi", "عمر هنيدى"] as const,
+  /** Social URLs used in Person JSON-LD `sameAs` (head + structured data). */
+  personSameAs: [
+    "https://www.linkedin.com/in/omarhenidi",
+    "https://www.instagram.com/omarhenidi",
+    "https://x.com/omarhenidi",
+    "https://github.com/omarhenidi",
+  ],
   socialProfiles: [
     "https://www.linkedin.com/in/omarhenidi",
     "https://x.com/omarhenidi",
@@ -25,13 +32,11 @@ export const SITE = {
   resumeUrl: "https://www.linkedin.com/in/omarhenidi",
 } as const;
 
-export const SOCIAL_USERNAME = SITE.socialUsername;
-
 export const SOCIAL_LINKS = [
-  { label: "LinkedIn", href: `https://www.linkedin.com/in/${SOCIAL_USERNAME}` },
-  { label: "Twitter", href: `https://x.com/${SOCIAL_USERNAME}` },
-  { label: "Instagram", href: `https://www.instagram.com/${SOCIAL_USERNAME}` },
-  { label: "GitHub", href: `https://github.com/${SOCIAL_USERNAME}` },
+  { label: "LinkedIn", href: `https://www.linkedin.com/in/${SITE.socialUsername}` },
+  { label: "Twitter", href: `https://x.com/${SITE.socialUsername}` },
+  { label: "Instagram", href: `https://www.instagram.com/${SITE.socialUsername}` },
+  { label: "GitHub", href: `https://github.com/${SITE.socialUsername}` },
 ] as const;
 
 export const NAV_LINKS = [

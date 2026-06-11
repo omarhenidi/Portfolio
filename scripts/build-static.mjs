@@ -1,8 +1,5 @@
 import { execSync } from "node:child_process";
-import { copyFileSync, existsSync, renameSync, rmSync } from "node:fs";
-
-const apiDir = "src/app/api";
-const apiBackup = ".api-build-backup";
+import { copyFileSync, existsSync, rmSync } from "node:fs";
 
 const requiredOutputs = [
   "out/index.html",
@@ -14,18 +11,6 @@ const requiredOutputs = [
 function cleanBuildCache() {
   if (existsSync(".next")) {
     rmSync(".next", { recursive: true, force: true });
-  }
-}
-
-function hideApiRoute() {
-  if (existsSync(apiDir)) {
-    renameSync(apiDir, apiBackup);
-  }
-}
-
-function restoreApiRoute() {
-  if (existsSync(apiBackup)) {
-    renameSync(apiBackup, apiDir);
   }
 }
 
@@ -43,18 +28,10 @@ function verifyExport() {
   }
 }
 
-try {
-  cleanBuildCache();
-  hideApiRoute();
-  execSync("next build", {
-    stdio: "inherit",
-    env: { ...process.env, BUILD_STATIC: "true" },
-  });
-  copyDeployAssets();
-  verifyExport();
-  console.log("\nStatic export complete: upload the entire out/ folder to your web server.");
-  console.log("Entry file: out/index.html");
-  console.log("Sitemap: out/sitemap.xml");
-} finally {
-  restoreApiRoute();
-}
+cleanBuildCache();
+execSync("next build", { stdio: "inherit" });
+copyDeployAssets();
+verifyExport();
+console.log("\nStatic export complete: upload the entire out/ folder to your web server.");
+console.log("Entry file: out/index.html");
+console.log("Sitemap: out/sitemap.xml");

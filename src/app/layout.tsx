@@ -10,7 +10,7 @@ import {
   buildPageMetadata,
   defaultDescription,
   defaultTitle,
-  identityGraphJsonLd,
+  personHeadJsonLd,
   siteUrl,
 } from "@/lib/seo";
 
@@ -88,13 +88,13 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
     <html lang="en" dir="ltr" className="dark">
       <head>
         <IdentityLinks />
+        <JsonLd data={personHeadJsonLd()} />
       </head>
       <body
         className={`${playfair.variable} ${inter.variable} ${spaceGrotesk.variable} ${jetbrainsMono.variable} selection:bg-primary-container selection:text-on-primary-container`}
       >
         <GoogleAnalytics />
         <SkipLink />
-        <JsonLd data={identityGraphJsonLd()} />
         <SiteShell>{children}</SiteShell>
       </body>
     </html>
