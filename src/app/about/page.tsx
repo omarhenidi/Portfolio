@@ -4,7 +4,7 @@ import Footer from "@/components/layout/Footer";
 import JsonLd from "@/components/seo/JsonLd";
 import TechTag from "@/components/ui/TechTag";
 import { SITE } from "@/lib/constants";
-import { buildPageMetadata, breadcrumbJsonLd, personJsonLd } from "@/lib/seo";
+import { buildPageMetadata, breadcrumbJsonLd } from "@/lib/seo";
 import { experience, stats } from "@/lib/projects";
 
 export const metadata: Metadata = buildPageMetadata({
@@ -17,13 +17,10 @@ export default function AboutPage() {
   return (
     <main className="pt-20 md:pt-24">
       <JsonLd
-        data={[
-          personJsonLd(),
-          breadcrumbJsonLd([
-            { name: "Home", path: "/" },
-            { name: "About", path: "/about" },
-          ]),
-        ]}
+        data={breadcrumbJsonLd([
+          { name: "Home", path: "/" },
+          { name: "About", path: "/about" },
+        ])}
       />
       <section className="px-6 py-section-padding-mobile md:px-margin-desktop md:py-section-padding-desktop">
         <div className="mx-auto max-w-7xl">

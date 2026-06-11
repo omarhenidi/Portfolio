@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Inter, JetBrains_Mono, Playfair_Display, Space_Grotesk } from "next/font/google";
+import "./globals.css";
 import GoogleAnalytics from "@/components/analytics/GoogleAnalytics";
 import IdentityLinks from "@/components/seo/IdentityLinks";
 import JsonLd from "@/components/seo/JsonLd";
@@ -15,7 +16,6 @@ import {
 } from "@/lib/seo";
 
 const googleSiteVerification = process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION?.trim();
-import "./globals.css";
 
 const playfair = Playfair_Display({
   subsets: ["latin"],

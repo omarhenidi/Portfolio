@@ -1,6 +1,6 @@
 {
   "name": "portfolio",
-  "version": "0.1.0",
+  "version": "1.0.0",
   "private": true,
   "engines": {
     "node": ">=18.18.0"
@@ -10,7 +10,6 @@
     "dev": "node scripts/ensure-dev-cache.mjs && next dev --turbopack",
     "dev:clean": "npm run clean && next dev --turbopack",
     "build": "node scripts/build-static.mjs",
-    "start": "next start",
     "lint": "next lint"
   },
   "dependencies": {
