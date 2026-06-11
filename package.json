@@ -6,7 +6,10 @@
     "node": ">=18.18.0"
   },
   "scripts": {
-    "dev": "next dev --turbopack",
+    "clean": "rm -rf .next out .api-build-backup",
+    "dev": "node scripts/ensure-dev-cache.mjs && next dev --turbopack",
+    "dev:webpack": "node scripts/ensure-dev-cache.mjs && next dev",
+    "dev:clean": "npm run clean && next dev --turbopack",
     "build": "node scripts/build-static.mjs",
     "build:server": "next build",
     "start": "next start",

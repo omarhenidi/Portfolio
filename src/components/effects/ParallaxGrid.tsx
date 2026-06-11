@@ -9,14 +9,34 @@ export default function ParallaxGrid() {
     const grid = gridRef.current;
     if (!grid) return;
 
-    const handleMove = (e: MouseEvent) => {
-      const x = (e.clientX - window.innerWidth / 2) * 0.02;
-      const y = (e.clientY - window.innerHeight / 2) * 0.02;
+    const isTouchDevice = window.matchMedia("(pointer: coarse)").matches;
+    const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    if (isTouchDevice || prefersReducedMotion) return;
+
+    let frame = 0;
+    let lastX = 0;
+    let lastY = 0;
+
+    const applyTransform = () => {
+      frame = 0;
+      const x = (lastX - window.innerWidth / 2) * 0.02;
+      const y = (lastY - window.innerHeight / 2) * 0.02;
       grid.style.transform = `perspective(1000px) rotateX(45deg) translate(${x}px, ${y}px)`;
     };
 
-    window.addEventListener("mousemove", handleMove);
-    return () => window.removeEventListener("mousemove", handleMove);
+    const handleMove = (e: MouseEvent) => {
+      lastX = e.clientX;
+      lastY = e.clientY;
+      if (!frame) {
+        frame = window.requestAnimationFrame(applyTransform);
+      }
+    };
+
+    window.addEventListener("mousemove", handleMove, { passive: true });
+    return () => {
+      window.removeEventListener("mousemove", handleMove);
+      if (frame) window.cancelAnimationFrame(frame);
+    };
   }, []);
 
   return (

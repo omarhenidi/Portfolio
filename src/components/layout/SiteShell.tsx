@@ -1,9 +1,11 @@
 "use client";
 
+import dynamic from "next/dynamic";
 import { useEffect, useState } from "react";
-import CustomCursor from "@/components/ui/CustomCursor";
 import Navigation from "@/components/layout/Navigation";
 import NavigationOverlay from "@/components/layout/NavigationOverlay";
+
+const CustomCursor = dynamic(() => import("@/components/ui/CustomCursor"), { ssr: false });
 
 export default function SiteShell({ children }: { children: React.ReactNode }) {
   const [menuOpen, setMenuOpen] = useState(false);

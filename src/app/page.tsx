@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import ParallaxGrid from "@/components/effects/ParallaxGrid";
+import HeroParallax from "@/components/home/HeroParallax";
 import Footer from "@/components/layout/Footer";
 import HeroTitle from "@/components/ui/HeroTitle";
 import Icon from "@/components/ui/Icon";
@@ -21,7 +21,7 @@ export default function HomePage() {
   return (
     <main>
       <section className="relative flex min-h-[calc(100dvh-4rem)] w-full items-center overflow-hidden bg-hero-band px-6 pt-20 md:min-h-screen md:px-margin-desktop md:pt-0">
-        <ParallaxGrid />
+        <HeroParallax />
         <div className="relative z-10 grid w-full grid-cols-12">
           <div className="col-span-12 flex flex-col justify-center md:col-span-8">
             <HeroTitle />

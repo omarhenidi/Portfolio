@@ -22,24 +22,31 @@ export default function CustomCursor() {
       }
     };
 
-    const onEnter = () => setHovering(true);
-    const onLeave = () => setHovering(false);
+    const interactiveSelector = "a, button, .bento-card, .project-card, .interactive";
 
-    document.addEventListener("mousemove", move);
+    const onPointerOver = (e: MouseEvent) => {
+      const target = e.target;
+      if (target instanceof Element && target.closest(interactiveSelector)) {
+        setHovering(true);
+      }
+    };
 
-    const interactives = document.querySelectorAll("a, button, .bento-card, .project-card, .interactive");
-    interactives.forEach((el) => {
-      el.addEventListener("mouseenter", onEnter);
-      el.addEventListener("mouseleave", onLeave);
-    });
+    const onPointerOut = (e: MouseEvent) => {
+      const related = e.relatedTarget;
+      if (!(related instanceof Element) || !related.closest(interactiveSelector)) {
+        setHovering(false);
+      }
+    };
+
+    document.addEventListener("mousemove", move, { passive: true });
+    document.addEventListener("mouseover", onPointerOver);
+    document.addEventListener("mouseout", onPointerOut);
 
     return () => {
       document.removeEventListener("mousemove", move);
+      document.removeEventListener("mouseover", onPointerOver);
+      document.removeEventListener("mouseout", onPointerOut);
       document.body.classList.remove("has-custom-cursor");
-      interactives.forEach((el) => {
-        el.removeEventListener("mouseenter", onEnter);
-        el.removeEventListener("mouseleave", onLeave);
-      });
     };
   }, []);
 
