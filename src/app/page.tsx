@@ -25,13 +25,13 @@ export default function HomePage() {
         <div className="relative z-10 grid w-full grid-cols-12">
           <div className="col-span-12 flex flex-col justify-center md:col-span-8">
             <HeroTitle />
-            <RevealOnScroll delay={800}>
+            <RevealOnScroll className="hero-reveal-instant">
               <p className="mb-stack-lg max-w-xl font-body text-body-lg text-on-surface-variant">
                 Building end-to-end products with full stack engineering — from Laravel
                 backends and MySQL data layers to React and Next.js frontends.
               </p>
             </RevealOnScroll>
-            <RevealOnScroll delay={1000}>
+            <RevealOnScroll className="hero-reveal-instant">
               <div className="flex gap-stack-md">
                 <Link
                   href="/work"

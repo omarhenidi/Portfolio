@@ -21,7 +21,7 @@ export default function ParallaxGrid() {
       frame = 0;
       const x = (lastX - window.innerWidth / 2) * 0.02;
       const y = (lastY - window.innerHeight / 2) * 0.02;
-      grid.style.transform = `perspective(1000px) rotateX(45deg) translate(${x}px, ${y}px)`;
+      grid.style.transform = `perspective(1000px) rotateX(45deg) translate3d(${x}px, ${y}px, 0)`;
     };
 
     const handleMove = (e: MouseEvent) => {

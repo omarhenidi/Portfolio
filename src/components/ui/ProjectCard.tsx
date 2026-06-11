@@ -36,6 +36,8 @@ export default function ProjectCard({ project, variant = "grid" }: ProjectCardPr
             alt={project.title}
             width={800}
             height={450}
+            sizes="(max-width: 768px) 100vw, 50vw"
+            loading="eager"
             className={bentoImageClass}
           />
         </div>
@@ -75,6 +77,8 @@ export default function ProjectCard({ project, variant = "grid" }: ProjectCardPr
           alt={project.title}
           width={800}
           height={500}
+          sizes="(max-width: 768px) 100vw, 33vw"
+          loading="eager"
           className={`project-image ${imageClass}`}
         />
       </div>

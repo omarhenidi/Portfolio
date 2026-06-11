@@ -1,5 +1,3 @@
-"use client";
-
 import { SITE } from "@/lib/constants";
 
 const TITLE = "OMAR HENIDI";

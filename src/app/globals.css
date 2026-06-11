@@ -52,18 +52,35 @@
   }
 
   .hero-title-reveal span {
-    @apply inline-block opacity-0 blur-[10px];
-    transform: translateY(20px);
+    @apply inline-block opacity-0;
+    transform: translate3d(0, 20px, 0);
+    will-change: transform, opacity;
     animation: reveal 0.8s forwards;
   }
 
+  @media (max-width: 767px) {
+    .hero-title-reveal span {
+      opacity: 1;
+      transform: none;
+      animation: none;
+      will-change: auto;
+    }
+
+    .hero-reveal-instant.reveal-on-scroll {
+      @apply translate-y-0 opacity-100;
+      transition: none;
+    }
+  }
+
   .reveal-on-scroll {
-    @apply translate-y-[30px] opacity-0 transition-all duration-[800ms];
+    @apply opacity-0 transition-[transform,opacity] duration-[800ms];
+    transform: translate3d(0, 30px, 0);
     transition-timing-function: cubic-bezier(0.22, 1, 0.36, 1);
   }
 
   .reveal-on-scroll.active {
-    @apply translate-y-0 opacity-100;
+    @apply opacity-100;
+    transform: translate3d(0, 0, 0);
   }
 
   .parallax-grid {
@@ -152,8 +169,7 @@
 @keyframes reveal {
   to {
     opacity: 1;
-    transform: translateY(0);
-    filter: blur(0);
+    transform: translate3d(0, 0, 0);
   }
 }
 

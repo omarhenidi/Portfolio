@@ -32,7 +32,7 @@ export default function AboutPage() {
             <div className="group overflow-hidden border border-outline-variant p-2 md:col-span-5">
               <div className="relative aspect-[4/5] overflow-hidden bg-surface-container-low">
                 <Image
-                  src="/images/omar-henidi.png"
+                  src="/images/omar-henidi.webp"
                   alt={`${SITE.name} (${SITE.nameAr}) — ${SITE.title} portrait`}
                   fill
                   priority
@@ -91,48 +91,72 @@ export default function AboutPage() {
           </h2>
           <div className="relative">
             <div className="timeline-line absolute left-4 hidden h-full md:left-1/2 md:block md:-translate-x-1/2" />
-            <div className="flex flex-col gap-12 md:gap-32">
-              {experience.map(({ company, role, period, current }, index) => (
-                <div key={company} className="group relative md:flex md:w-full md:items-center md:justify-between">
-                  {/* Mobile */}
-                  <div className="relative border-l border-outline-variant pl-8 md:hidden">
+            <div className="flex flex-col gap-12 md:gap-24">
+              {experience.map(({ company, role, period, current }, index) => {
+                const contentOnRight = index % 2 === 0;
+
+                return (
+                  <div
+                    key={company}
+                    className="group relative md:grid md:grid-cols-[1fr_auto_1fr] md:items-center md:gap-x-stack-lg"
+                  >
+                    {/* Mobile */}
+                    <div className="relative border-l border-outline-variant pl-8 md:hidden">
+                      <div
+                        className={`absolute -left-[5px] top-1.5 rounded-full border-background ${
+                          current
+                            ? "h-3 w-3 border-[3px] bg-primary"
+                            : "h-2.5 w-2.5 border-2 bg-outline-variant"
+                        }`}
+                      />
+                      <span className="mb-2 block font-ui text-ui-label text-primary">{period}</span>
+                      <h3 className="mb-1 font-ui text-headline-md text-on-surface">{company}</h3>
+                      <p className="font-body text-body-md text-on-surface-variant">{role}</p>
+                    </div>
+
+                    {/* Desktop — left column */}
                     <div
-                      className={`absolute -left-[5px] top-1.5 rounded-full border-background ${
+                      className={`hidden md:block ${
+                        contentOnRight ? "pr-stack-lg text-right" : "pr-stack-lg text-left"
+                      }`}
+                    >
+                      {contentOnRight ? (
+                        <span className="font-ui text-ui-label text-primary">{period}</span>
+                      ) : (
+                        <>
+                          <h3 className="mb-1 font-ui text-headline-md text-on-surface">{company}</h3>
+                          <p className="font-body text-body-md text-on-surface-variant">{role}</p>
+                        </>
+                      )}
+                    </div>
+
+                    {/* Desktop — center dot */}
+                    <div
+                      className={`z-10 hidden shrink-0 rounded-full border-background md:block ${
                         current
-                          ? "h-3 w-3 border-[3px] bg-primary"
-                          : "h-2.5 w-2.5 border-2 bg-outline-variant"
+                          ? "h-4 w-4 border-4 bg-primary"
+                          : "h-3 w-3 border-2 bg-outline-variant transition-colors group-hover:bg-primary"
                       }`}
                     />
-                    <span className="mb-2 block font-ui text-ui-label text-primary">{period}</span>
-                    <h3 className="mb-1 font-ui text-headline-md text-on-surface">{company}</h3>
-                    <p className="font-body text-body-md text-on-surface-variant">{role}</p>
-                  </div>
 
-                  {/* Desktop */}
-                  <div
-                    className={`hidden w-[45%] opacity-0 transition-opacity duration-500 group-hover:opacity-100 md:block ${
-                      index % 2 === 1 ? "pl-stack-lg text-left" : "pr-stack-lg text-right"
-                    }`}
-                  >
-                    <span className="font-ui text-ui-label text-primary">{period}</span>
+                    {/* Desktop — right column */}
+                    <div
+                      className={`hidden md:block ${
+                        contentOnRight ? "pl-stack-lg text-left" : "pl-stack-lg text-right"
+                      }`}
+                    >
+                      {contentOnRight ? (
+                        <>
+                          <h3 className="mb-1 font-ui text-headline-md text-on-surface">{company}</h3>
+                          <p className="font-body text-body-md text-on-surface-variant">{role}</p>
+                        </>
+                      ) : (
+                        <span className="font-ui text-ui-label text-primary">{period}</span>
+                      )}
+                    </div>
                   </div>
-                  <div
-                    className={`absolute left-1/2 z-10 hidden -translate-x-1/2 rounded-full border-background md:block ${
-                      current
-                        ? "h-4 w-4 border-4 bg-primary"
-                        : "h-3 w-3 border-2 bg-outline-variant group-hover:bg-primary"
-                    }`}
-                  />
-                  <div
-                    className={`hidden w-[45%] md:block ${
-                      index % 2 === 1 ? "pr-stack-lg text-right" : "pl-stack-lg"
-                    }`}
-                  >
-                    <h3 className="mb-1 font-ui text-headline-md text-on-surface">{company}</h3>
-                    <p className="font-body text-body-md text-on-surface-variant">{role}</p>
-                  </div>
-                </div>
-              ))}
+                );
+              })}
             </div>
           </div>
         </div>

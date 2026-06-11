@@ -44,7 +44,7 @@ export const projects: Project[] = [
     shortDescription:
       "Import-from-China platform with consumer site and admin dashboard for sourcing, QC, and logistics.",
     tags: ["Next.js", "Laravel", "MySQL"],
-    image: "/images/projects/maat.png",
+    image: "/images/projects/maat.webp",
     imageFit: "contain",
     imageBackground: "#ffffff",
     role: "Technical Director & Full Stack Engineer",
@@ -103,7 +103,7 @@ export const projects: Project[] = [
     shortDescription:
       "AI-driven architectural visualization platform for modern interior designers.",
     tags: ["Next.js", "Laravel", "MySQL"],
-    image: "/images/projects/lookfindr.png",
+    image: "/images/projects/lookfindr.webp",
     imageFit: "contain",
     role: "Team Lead",
     timeline: "2023 — 2025",
@@ -145,7 +145,7 @@ export const projects: Project[] = [
     description:
       "High-end bespoke tailoring platform bridging traditional craftsmanship with a digital-first shopping experience.",
     tags: ["React", "Laravel", "MySQL"],
-    image: "/images/projects/chiaka.png",
+    image: "/images/projects/chiaka.webp",
     imageFit: "contain",
     imageBackground: "#333333",
   },
@@ -157,7 +157,7 @@ export const projects: Project[] = [
     description:
       "International Business Driving License portal providing global professional certification and learning management.",
     tags: ["Next.js", "Laravel", "MySQL"],
-    image: "/images/projects/ibdl.jpg",
+    image: "/images/projects/ibdl.webp",
     imageFit: "contain",
     sites: [{ label: "Live Site", url: "https://ibdl.net/" }],
   },
@@ -169,7 +169,7 @@ export const projects: Project[] = [
     description:
       "E-commerce marketplace platform with product catalog management, secure checkout, and admin dashboards.",
     tags: ["React", "Laravel", "MySQL"],
-    image: "/images/projects/shopisonic.png",
+    image: "/images/projects/shopisonic.webp",
     imageFit: "contain",
     sites: [{ label: "Live Site", url: "https://shopisonic.com/" }],
   },
@@ -181,7 +181,7 @@ export const projects: Project[] = [
     description:
       "Community-driven healthcare portal facilitating aid and medical resources for underserved regions.",
     tags: ["Next.js", "Laravel", "MySQL"],
-    image: "/images/projects/shuaa-alamal.png",
+    image: "/images/projects/shuaa-alamal.webp",
     imageFit: "contain",
     sites: [{ label: "Live Site", url: "https://www.shuaa-alamal.com/" }],
   },
@@ -193,7 +193,7 @@ export const projects: Project[] = [
     description:
       "Advanced fire safety management system for industrial complexes with real-time sensor integration and risk maps.",
     tags: ["React", "Laravel", "MySQL"],
-    image: "/images/projects/gefires.png",
+    image: "/images/projects/gefires.webp",
     imageFit: "contain",
     sites: [{ label: "Live Site", url: "https://gefires.com/" }],
   },
@@ -205,7 +205,7 @@ export const projects: Project[] = [
     description:
       "E-commerce platform with product catalog, cart, checkout, and order management for online retail.",
     tags: ["Next.js", "Laravel", "MySQL"],
-    image: "/images/projects/order.png",
+    image: "/images/projects/order.webp",
     imageFit: "contain",
     sites: [{ label: "Live Site", url: "https://www.orderfs.com/" }],
   },
@@ -217,7 +217,7 @@ export const projects: Project[] = [
     description:
       "Premium digital mortgage platform simplifying financing for residential and commercial real estate investments.",
     tags: ["React", "Laravel", "MySQL"],
-    image: "/images/projects/tamweel-misr.png",
+    image: "/images/projects/tamweel-misr.webp",
     imageFit: "contain",
     imageBackground: "#000000",
     sites: [{ label: "Products", url: "https://easwaaqmisr.com/products/" }],
