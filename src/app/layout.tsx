@@ -69,12 +69,9 @@ export const metadata: Metadata = {
   publisher: `${SITE.name} (${SITE.nameAr})`,
   category: "technology",
   icons: {
-    icon: [
-      { url: SITE.favicon, sizes: "48x48", type: "image/x-icon" },
-      { url: SITE.icon, sizes: "512x512", type: "image/png" },
-    ],
+    icon: [{ url: SITE.icon, sizes: "512x512", type: "image/png" }],
     apple: [{ url: SITE.icon, sizes: "512x512", type: "image/png" }],
-    shortcut: SITE.favicon,
+    shortcut: SITE.icon,
   },
   manifest: "/manifest.webmanifest",
 };

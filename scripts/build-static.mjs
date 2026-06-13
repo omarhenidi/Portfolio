@@ -6,7 +6,6 @@ const requiredOutputs = [
   "out/sitemap.xml",
   "out/robots.txt",
   "out/manifest.webmanifest",
-  "out/favicon.ico",
   "out/og-image.png",
   "out/icon.png",
   "out/images/portrait.webp",

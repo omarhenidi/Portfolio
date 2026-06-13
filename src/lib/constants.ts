@@ -21,7 +21,6 @@ export const SITE = {
   image: "/images/portrait.webp",
   ogImage: "/og-image.png",
   icon: "/icon.png",
-  favicon: "/favicon.ico",
   imageWidth: 682,
   imageHeight: 1024,
 } as const;
