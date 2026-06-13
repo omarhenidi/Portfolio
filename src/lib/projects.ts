@@ -27,7 +27,7 @@ export type Project = {
   stack?: string[];
 };
 
-export const DEFAULT_IMAGE_BACKGROUND = "#ffffff";
+const DEFAULT_IMAGE_BACKGROUND = "#ffffff";
 
 export function getProjectImageBackground(project: Project): string {
   return project.imageBackground ?? DEFAULT_IMAGE_BACKGROUND;

@@ -54,7 +54,6 @@ The contact form opens the visitor's email app via `mailto:`.
 | Command | Description |
 |---------|-------------|
 | `npm run dev` | Local development |
-| `npm run dev:clean` | Clear cache and start dev |
 | `npm run build` | Static export to `out/` |
 | `npm run clean` | Remove `.next/` and `out/` |
 | `npm run lint` | ESLint |

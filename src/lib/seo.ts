@@ -7,8 +7,6 @@ export const defaultTitle = `${SITE.name} - ${SITE.nameAr}`;
 export const defaultDescription = SITE.seoDescription;
 
 export const personId = `${siteUrl}/#person`;
-export const websiteId = `${siteUrl}/#website`;
-export const profilePageId = `${siteUrl}/#profile`;
 
 export function absoluteUrl(path = "/"): string {
   return new URL(path, siteUrl).toString();
@@ -31,6 +29,7 @@ export function personHeadJsonLd() {
     "@type": "Person",
     name: SITE.name,
     url: absolutePageUrl("/"),
+    image: absoluteUrl(SITE.icon),
     sameAs: [...SITE.personSameAs],
   };
 }
@@ -65,7 +64,7 @@ export function buildPageMetadata({
   title,
   description = defaultDescription,
   path = "/",
-  image = "/og-image.png",
+  image = SITE.ogImage,
   noIndex = false,
 }: {
   title: string;
@@ -122,106 +121,6 @@ export function buildPageMetadata({
       description,
       images: [imageUrl],
     },
-  };
-}
-
-export function identityGraphJsonLd() {
-  return {
-    "@context": "https://schema.org",
-    "@graph": [
-      {
-        "@type": "Person",
-        "@id": personId,
-        name: SITE.name,
-        givenName: SITE.givenName,
-        familyName: SITE.familyName,
-        alternateName: SITE.alternateNames,
-        jobTitle: SITE.title,
-        email: `mailto:${SITE.email}`,
-        telephone: SITE.phone,
-        url: siteUrl,
-        image: absoluteUrl("/icon-1024.png"),
-        nationality: {
-          "@type": "Country",
-          name: "Egypt",
-        },
-        address: {
-          "@type": "PostalAddress",
-          addressLocality: "Cairo",
-          addressCountry: "EG",
-        },
-        sameAs: [...SITE.personSameAs],
-        knowsAbout: [
-          "Full Stack Engineering",
-          "Technical Direction",
-          "System Architecture",
-          "React",
-          "Next.js",
-          "PHP Laravel",
-          "MySQL",
-          "Engineering Leadership",
-        ],
-        worksFor: {
-          "@type": "Organization",
-          name: "MAAT",
-        },
-      },
-      {
-        "@type": "WebSite",
-        "@id": websiteId,
-        name: defaultTitle,
-        alternateName: [SITE.name, SITE.nameAr],
-        url: siteUrl,
-        description: defaultDescription,
-        inLanguage: ["en", "ar"],
-        publisher: { "@id": personId },
-        author: { "@id": personId },
-      },
-      {
-        "@type": "ProfilePage",
-        "@id": profilePageId,
-        url: siteUrl,
-        name: defaultTitle,
-        description: defaultDescription,
-        inLanguage: ["en", "ar"],
-        isPartOf: { "@id": websiteId },
-        mainEntity: { "@id": personId },
-        about: { "@id": personId },
-      },
-    ],
-  };
-}
-
-export function personJsonLd() {
-  return {
-    "@context": "https://schema.org",
-    "@type": "Person",
-    "@id": personId,
-    name: SITE.name,
-    givenName: SITE.givenName,
-    familyName: SITE.familyName,
-    alternateName: SITE.alternateNames,
-    jobTitle: SITE.title,
-    email: SITE.email,
-    telephone: SITE.phone,
-    url: siteUrl,
-    image: absoluteUrl("/icon-1024.png"),
-    address: {
-      "@type": "PostalAddress",
-      addressLocality: "Cairo",
-      addressCountry: "EG",
-    },
-    sameAs: [...SITE.personSameAs],
-    knowsAbout: [
-      "Full Stack Engineering",
-      "Technical Direction",
-      "System Architecture",
-      "React",
-      "Next.js",
-      "PHP Laravel",
-      "MySQL",
-      "Engineering Leadership",
-    ],
   };
 }
 

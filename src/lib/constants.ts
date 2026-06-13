@@ -2,8 +2,6 @@ export const SITE = {
   name: "Omar Henidi",
   nameAr: "عمر هنيدي",
   title: "Technical Director & Full Stack Engineer",
-  description:
-    "Omar Henidi (عمر هنيدي) — Technical Director and Full Stack Engineer based in Cairo, Egypt. Portfolio, projects, and contact for Omar Henidi across LinkedIn, GitHub, Instagram, and X.",
   seoDescription:
     "Official portfolio of Omar Henidi (عمر هنيدي) — Technical Director & Full Stack Engineer in Cairo, Egypt. View projects, experience, and connect on LinkedIn, GitHub, Instagram, and X.",
   url: process.env.NEXT_PUBLIC_SITE_URL ?? "https://omarhenidi.com",
@@ -12,24 +10,20 @@ export const SITE = {
   location: "Egypt, Cairo",
   availability: "Open for new projects — H2 2026",
   socialUsername: "omarhenidi",
-  givenName: "Omar",
-  familyName: "Henidi",
   alternateNames: ["عمر هنيدي", "Omar Henidi", "عمر هنيدى"] as const,
-  /** Social URLs used in Person JSON-LD `sameAs` (head + structured data). */
   personSameAs: [
     "https://www.linkedin.com/in/omarhenidi",
     "https://www.instagram.com/omarhenidi",
     "https://x.com/omarhenidi",
     "https://github.com/omarhenidi",
   ],
-  socialProfiles: [
-    "https://www.linkedin.com/in/omarhenidi",
-    "https://x.com/omarhenidi",
-    "https://twitter.com/omarhenidi",
-    "https://www.instagram.com/omarhenidi",
-    "https://github.com/omarhenidi",
-  ],
   resumeUrl: "https://www.linkedin.com/in/omarhenidi",
+  image: "/images/portrait.webp",
+  ogImage: "/og-image.png",
+  icon: "/icon.png",
+  favicon: "/favicon.ico",
+  imageWidth: 682,
+  imageHeight: 1024,
 } as const;
 
 export const SOCIAL_LINKS = [
@@ -50,9 +44,7 @@ export const MENU_LINKS: {
   href: string;
   external?: boolean;
 }[] = [
-  { label: "Work", href: "/work" },
-  { label: "About", href: "/about" },
-  { label: "Contact", href: "/contact" },
+  ...NAV_LINKS,
   { label: "Resume", href: SITE.resumeUrl, external: true },
 ];
 

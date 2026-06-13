@@ -70,15 +70,11 @@ export const metadata: Metadata = {
   category: "technology",
   icons: {
     icon: [
-      { url: "/favicon-16.png", sizes: "16x16", type: "image/png" },
-      { url: "/favicon-32.png", sizes: "32x32", type: "image/png" },
-      { url: "/favicon-48.png", sizes: "48x48", type: "image/png" },
-      { url: "/icon-192.png", sizes: "192x192", type: "image/png" },
-      { url: "/icon-512.png", sizes: "512x512", type: "image/png" },
-      { url: "/icon-1024.png", sizes: "1024x1024", type: "image/png" },
+      { url: SITE.favicon, sizes: "48x48", type: "image/x-icon" },
+      { url: SITE.icon, sizes: "512x512", type: "image/png" },
     ],
-    apple: [{ url: "/apple-icon.png", sizes: "180x180", type: "image/png" }],
-    shortcut: "/favicon-32.png",
+    apple: [{ url: SITE.icon, sizes: "512x512", type: "image/png" }],
+    shortcut: SITE.favicon,
   },
   manifest: "/manifest.webmanifest",
 };

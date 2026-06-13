@@ -29,12 +29,13 @@ export default function AboutPage() {
             <div className="group overflow-hidden border border-outline-variant p-2 md:col-span-5">
               <div className="relative aspect-[4/5] overflow-hidden bg-surface-container-low">
                 <Image
-                  src="/images/omar-henidi.webp"
+                  src={SITE.image}
                   alt={`${SITE.name} (${SITE.nameAr}) — ${SITE.title} portrait`}
-                  fill
+                  width={SITE.imageWidth}
+                  height={SITE.imageHeight}
                   priority
-                  sizes="(max-width: 768px) 100vw, 40vw"
-                  className="object-cover object-top grayscale transition-all duration-700 group-hover:scale-105 group-hover:grayscale-0"
+                  sizes="(max-width: 768px) 100vw, (max-width: 1280px) 42vw, 560px"
+                  className="h-full w-full object-cover object-top grayscale transition-all duration-700 group-hover:scale-105 group-hover:grayscale-0"
                 />
               </div>
             </div>
