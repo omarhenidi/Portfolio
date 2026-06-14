@@ -12,6 +12,10 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@fontsource/inter": "^5.2.8",
+    "@fontsource/jetbrains-mono": "^5.2.8",
+    "@fontsource/playfair-display": "^5.2.8",
+    "@fontsource/space-grotesk": "^5.2.10",
     "lucide-react": "^1.17.0",
     "next": "^15.3.3",
     "react": "^19.1.0",
