@@ -40,7 +40,7 @@ export default function ParallaxGrid() {
   }, []);
 
   return (
-    <div className="absolute inset-0 z-0 opacity-20">
+    <div className="absolute inset-0 z-0 opacity-[0.22]">
       <div
         ref={gridRef}
         className="parallax-grid absolute inset-0 -top-1/2 scale-150 transition-transform duration-1000 ease-out"

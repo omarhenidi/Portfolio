@@ -14,10 +14,13 @@ export default function WorkGrid() {
   return (
     <>
       <section
-        className="mb-section-padding-mobile overflow-x-auto px-6 md:mb-section-padding-desktop md:px-margin-desktop md:no-scrollbar"
+        className="mb-stack-lg overflow-x-auto px-6 md:mb-stack-xl md:px-margin-desktop md:no-scrollbar"
         aria-label="Project filters"
       >
-        <div className="flex gap-stack-lg whitespace-nowrap border-b border-outline-variant pb-stack-md" role="tablist">
+        <div
+          className="flex gap-stack-lg whitespace-nowrap border-b border-outline-variant/30 pb-stack-md"
+          role="tablist"
+        >
           {WORK_FILTERS.map((filter) => {
             const active = activeFilter === filter;
             return (
@@ -30,7 +33,7 @@ export default function WorkGrid() {
                 className={`font-ui text-ui-label uppercase tracking-widest transition-all focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-primary-container ${
                   active
                     ? "-mb-stack-md border-b-2 border-primary-container pb-stack-md text-primary-container"
-                    : "text-on-surface-variant hover:text-primary-container"
+                    : "text-on-surface-variant hover:text-primary"
                 }`}
               >
                 {filter}
@@ -41,16 +44,16 @@ export default function WorkGrid() {
       </section>
 
       <section
-        className="mx-6 grid grid-cols-1 border-l border-t border-outline-variant md:mx-margin-desktop md:grid-cols-2"
+        className="grid grid-cols-1 gap-gutter px-6 pb-section-padding-mobile md:grid-cols-2 md:px-margin-desktop md:pb-section-padding-desktop"
         aria-live="polite"
         aria-label="Filtered projects"
       >
         {filtered.length > 0 ? (
           filtered.map((project: Project) => (
-            <ProjectCard key={project.slug} project={project} variant="grid" />
+            <ProjectCard key={project.slug} project={project} variant="bento" />
           ))
         ) : (
-          <p className="col-span-full p-stack-lg font-body text-body-md text-on-surface-variant">
+          <p className="col-span-full surface-card p-stack-lg font-body text-body-md text-on-surface-variant">
             No projects match this category yet.
           </p>
         )}

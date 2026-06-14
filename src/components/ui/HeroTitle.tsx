@@ -4,13 +4,24 @@ const TITLE = "OMAR HENIDI";
 
 export default function HeroTitle() {
   return (
-    <h1 className="hero-title-reveal mb-stack-md max-w-full font-display text-[clamp(2.75rem,13vw,8.75rem)] leading-[0.9] tracking-tighter text-on-surface">
-      {TITLE.split("").map((char, i) => (
-        <span key={`${char}-${i}`} style={{ animationDelay: `${i * 0.08}s` }}>
-          {char === " " ? "\u00A0" : char}
-        </span>
-      ))}
-      <span className="sr-only">{SITE.nameAr}</span>
+    <h1
+      id="hero-heading"
+      className="hero-title-reveal w-full whitespace-nowrap font-display text-[clamp(2rem,10.5vw,9.5rem)] leading-[0.88] tracking-[-0.04em] text-on-surface"
+    >
+      <span className="block overflow-hidden">
+        {TITLE.split("").map((char, index) => (
+          <span
+            key={`${char}-${index}`}
+            className="inline-block"
+            style={{ animationDelay: `${index * 0.045}s` }}
+          >
+            {char === " " ? "\u00A0" : char}
+          </span>
+        ))}
+      </span>
+      <span className="sr-only">
+        {SITE.name} ({SITE.nameAr})
+      </span>
     </h1>
   );
 }

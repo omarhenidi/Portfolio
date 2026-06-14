@@ -1,6 +1,7 @@
 import {
   ArrowRight,
   ArrowUpRight,
+  ChevronDown,
   Code,
   Cpu,
   ExternalLink,
@@ -13,6 +14,7 @@ import {
 const icons = {
   arrow_forward: ArrowRight,
   arrow_outward: ArrowUpRight,
+  keyboard_arrow_down: ChevronDown,
   close: X,
   open_in_new: ExternalLink,
   code: Code,

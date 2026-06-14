@@ -39,6 +39,7 @@ const config: Config = {
         "stack-sm": "8px",
         "stack-md": "16px",
         "stack-lg": "32px",
+        "stack-xl": "48px",
         gutter: "32px",
         "margin-desktop": "64px",
         "section-padding-mobile": "80px",

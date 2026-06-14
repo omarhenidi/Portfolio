@@ -11,7 +11,7 @@ export default function BrandMark({ href = "/", onClick, className = "" }: Brand
     <Link
       href={href}
       onClick={onClick}
-      aria-label="Omar Henidi — Home"
+      aria-label="Omar Henidi, home"
       className={`group inline-flex shrink-0 flex-col leading-none ${className}`}
     >
       <span className="font-display text-headline-md font-bold tracking-tighter text-on-surface transition-colors group-hover:text-primary">

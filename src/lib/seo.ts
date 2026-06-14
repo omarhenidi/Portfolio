@@ -45,7 +45,7 @@ export const defaultKeywords = [
   "Omar Henidi Instagram",
   "عمر هنيدي مهندس",
   "Full Stack Engineer",
-  "Technical Director",
+  "Technical Team Lead",
   "Full Stack Engineering",
   "Technical Leadership",
   "Backend Development",
@@ -109,7 +109,7 @@ export function buildPageMetadata({
           url: imageUrl,
           width: 1200,
           height: 630,
-          alt: `${SITE.name} (${SITE.nameAr}) — ${SITE.title}`,
+          alt: `${SITE.name} (${SITE.nameAr}), ${SITE.title}`,
         },
       ],
     },
@@ -156,6 +156,6 @@ export function creativeWorkJsonLd(project: {
       "@id": personId,
       name: SITE.name,
     },
-    dateCreated: project.timeline?.split("—")[0]?.trim(),
+    dateCreated: project.timeline?.split(/\s[-–—]\s/)[0]?.trim(),
   };
 }

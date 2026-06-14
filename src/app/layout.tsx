@@ -78,12 +78,13 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang="en" dir="ltr" className="dark">
+    <html lang="en" dir="ltr" className="dark" suppressHydrationWarning>
       <head>
         <IdentityLinks />
         <JsonLd data={personHeadJsonLd()} />
       </head>
       <body
+        suppressHydrationWarning
         className={`${playfair.variable} ${inter.variable} ${spaceGrotesk.variable} ${jetbrainsMono.variable} selection:bg-primary-container selection:text-on-primary-container`}
       >
         <GoogleAnalytics />

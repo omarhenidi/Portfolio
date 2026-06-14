@@ -25,7 +25,7 @@ export default function ProjectCard({ project, variant = "grid" }: ProjectCardPr
     return (
       <Link
         href={`/work/${project.slug}`}
-        className="bento-card group overflow-hidden border border-outline-variant bg-surface-container-low"
+        className="bento-card group overflow-hidden border border-outline-variant bg-surface-container-low transition-colors duration-300 hover:border-primary-container"
       >
         <div
           className="aspect-video overflow-hidden border-b border-outline-variant"

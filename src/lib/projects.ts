@@ -1,5 +1,5 @@
 import type { IconName } from "@/components/ui/Icon";
-import type { WorkFilter } from "@/lib/constants";
+import { SITE, type WorkFilter } from "@/lib/constants";
 
 export type Project = {
   slug: string;
@@ -40,15 +40,15 @@ export const projects: Project[] = [
     category: "Sourcing / Logistics / SaaS",
     filters: ["SaaS"],
     description:
-      "End-to-end import platform for sourcing, quality control, and logistics — with a public consumer site and a full admin dashboard for operations.",
+      "Import platform for sourcing, quality control, and logistics, with a public site and an admin dashboard for operations.",
     shortDescription:
       "Import-from-China platform with consumer site and admin dashboard for sourcing, QC, and logistics.",
     tags: ["Next.js", "Laravel", "MySQL"],
     image: "/images/projects/maat.webp",
     imageFit: "contain",
     imageBackground: "#ffffff",
-    role: "Technical Director & Full Stack Engineer",
-    timeline: "2024 — Present",
+    role: "Technical Team Lead",
+    timeline: "Feb 2025 - Present",
     status: "Live Release",
     sites: [{ label: "Consumer Site", url: "https://maat.vip/" }],
     privateSites: [{ label: "Admin Dashboard" }],
@@ -68,16 +68,15 @@ export const projects: Project[] = [
       "Calendar",
     ],
     overview: [
-      "MAAT Group is a dual-platform product for global import operations — connecting businesses with reliable suppliers in China through sourcing, quality control, and end-to-end logistics. The consumer site at maat.vip guides clients from idea to delivery with transparent cost estimation and import workflows.",
-      "A secure, role-based admin dashboard powers internal operations: product catalogs, quotations, order and transfer management, client and supplier CRM, task tracking, inquiries, content publishing, and appointment scheduling with calendar views.",
-      "As Technical Director, I led full stack delivery across both surfaces — unified Laravel APIs, role-based admin access, and a consumer experience optimized for trust, clarity, and conversion in cross-border trade.",
+      "MAAT Group helps businesses import from China. The public site at maat.vip walks clients through sourcing, quality control, logistics, and cost estimates. The admin dashboard handles the day-to-day work: products, quotes, orders, clients, suppliers, and more.",
+      "As Technical Team Lead, I lead enterprise system setup and deployment, work with other teams to integrate solutions, and keep both platforms stable, fast, and secure.",
     ],
     architecture: [
       {
         icon: "hub",
         title: "Consumer Platform",
         description:
-          "Public-facing site for import services, cost estimation, supplier discovery, and client onboarding — built for international audiences with multilingual support.",
+          "Public site for import services, cost estimates, supplier discovery, and client onboarding, with multilingual support.",
       },
       {
         icon: "memory",
@@ -96,46 +95,46 @@ export const projects: Project[] = [
   {
     slug: "lookfindr",
     title: "Lookfindr",
-    category: "SaaS / Search",
+    category: "SaaS / CRM",
     filters: ["SaaS"],
     description:
-      "An advanced visual search engine for developers, optimizing asset discovery through machine learning and intuitive indexing.",
+      "CRM and SaaS platform for salons and spas, with online booking, staff management, payments, and a full admin system.",
     shortDescription:
-      "AI-driven architectural visualization platform for modern interior designers.",
+      "Salon and spa management platform with CRM, booking, and e-commerce.",
     tags: ["Next.js", "Laravel", "MySQL"],
     image: "/images/projects/lookfindr.webp",
     imageFit: "contain",
-    role: "Team Lead",
-    timeline: "2023 — 2025",
+    role: "Full Stack Team Lead",
+    timeline: "Sep 2023 - Oct 2025",
     status: "Live Release",
     sites: [
       { label: "Landing Page", url: "https://lookfindr.com/" },
       { label: "CRM", url: "https://app.lookfindr.com/" },
     ],
     overview: [
-      "Lookfindr is a next-generation visual discovery platform designed for architectural curation. By leveraging proprietary computer vision models, the platform allows architects and designers to search through vast spatial databases using only visual semantics, bypassing traditional tagging limitations.",
-      "As the Team Lead, I oversaw the end-to-end development of the core interface and search orchestration layer, ensuring a seamless bridge between complex data visualization and high-end editorial aesthetics.",
+      "Lookfindr is a full-stack salon and spa management platform. We built Laravel APIs and Next.js apps for consumers and salon staff, covering bookings, services, and payments.",
+      "The CRM brings together operations, finance, inventory, analytics, and customer engagement, with real-time online booking and admin control. As Full Stack Team Lead at NAYA AL-ALAM, I led this work from start to finish.",
     ],
     architecture: [
       {
         icon: "hub",
-        title: "Distributed Mesh",
+        title: "Consumer & Salon Apps",
         description:
-          "Built on a microservices mesh that handles real-time visual indexing across three global data centers.",
+          "Laravel APIs and Next.js interfaces for bookings, services, staff, and payments.",
       },
       {
         icon: "memory",
-        title: "Neural Search",
+        title: "CRM & Admin",
         description:
-          "Custom-trained CLIP variants optimized for recognizing spatial relationships and material textures.",
+          "Operations, finance, inventory, analytics, and customer tools in one admin dashboard.",
       },
     ],
     results: [
-      { value: "40%", label: "Search Efficiency" },
-      { value: "2.4s", label: "Avg. Latency" },
-      { value: "120k", label: "Active Assets" },
+      { value: "2", label: "Live Apps" },
+      { value: "5+", label: "CRM Modules" },
+      { value: "Live", label: "Online Booking" },
     ],
-    stack: ["React / Next.js", "Laravel", "MySQL", "TypeScript", "Tailwind CSS"],
+    stack: ["Next.js", "Laravel", "MySQL", "TypeScript", "Tailwind CSS"],
   },
   {
     slug: "chiaka",
@@ -143,7 +142,7 @@ export const projects: Project[] = [
     category: "E-commerce / Fashion",
     filters: ["E-commerce"],
     description:
-      "High-end bespoke tailoring platform bridging traditional craftsmanship with a digital-first shopping experience.",
+      "Online tailoring platform for made-to-measure orders and a smooth checkout flow.",
     tags: ["React", "Laravel", "MySQL"],
     image: "/images/projects/chiaka.webp",
     imageFit: "contain",
@@ -155,7 +154,7 @@ export const projects: Project[] = [
     category: "EdTech / Certification",
     filters: ["EdTech"],
     description:
-      "International Business Driving License portal providing global professional certification and learning management.",
+      "Portal for the International Business Driving License certification and learning management.",
     tags: ["Next.js", "Laravel", "MySQL"],
     image: "/images/projects/ibdl.webp",
     imageFit: "contain",
@@ -167,7 +166,7 @@ export const projects: Project[] = [
     category: "E-commerce / Tech",
     filters: ["E-commerce"],
     description:
-      "E-commerce marketplace platform with product catalog management, secure checkout, and admin dashboards.",
+      "E-commerce marketplace with product catalog, checkout, and admin tools.",
     tags: ["React", "Laravel", "MySQL"],
     image: "/images/projects/shopisonic.webp",
     imageFit: "contain",
@@ -179,7 +178,7 @@ export const projects: Project[] = [
     category: "Healthcare / NGO",
     filters: ["Healthcare"],
     description:
-      "Community-driven healthcare portal facilitating aid and medical resources for underserved regions.",
+      "Healthcare portal that helps communities access aid and medical resources.",
     tags: ["Next.js", "Laravel", "MySQL"],
     image: "/images/projects/shuaa-alamal.webp",
     imageFit: "contain",
@@ -191,7 +190,7 @@ export const projects: Project[] = [
     category: "Industrial / Safety",
     filters: ["Industrial"],
     description:
-      "Advanced fire safety management system for industrial complexes with real-time sensor integration and risk maps.",
+      "Fire safety management for industrial sites, with sensor data and risk mapping.",
     tags: ["React", "Laravel", "MySQL"],
     image: "/images/projects/gefires.webp",
     imageFit: "contain",
@@ -203,10 +202,12 @@ export const projects: Project[] = [
     category: "E-commerce",
     filters: ["E-commerce"],
     description:
-      "E-commerce platform with product catalog, cart, checkout, and order management for online retail.",
-    tags: ["Next.js", "Laravel", "MySQL"],
+      "E-commerce site with catalog, cart, checkout, and order management.",
+    tags: ["React", "Laravel", "MySQL"],
     image: "/images/projects/order.webp",
     imageFit: "contain",
+    role: "Full Stack Engineer",
+    timeline: "Oct 2022 - Feb 2023",
     sites: [{ label: "Live Site", url: "https://www.orderfs.com/" }],
   },
   {
@@ -215,11 +216,13 @@ export const projects: Project[] = [
     category: "Fintech / Banking",
     filters: ["Fintech"],
     description:
-      "Premium digital mortgage platform simplifying financing for residential and commercial real estate investments.",
+      "Digital mortgage platform for residential and commercial property financing.",
     tags: ["React", "Laravel", "MySQL"],
     image: "/images/projects/tamweel-misr.webp",
     imageFit: "contain",
     imageBackground: "#000000",
+    role: "Full Stack Engineer (Internship)",
+    timeline: "Jul 2022 - Sep 2022",
     sites: [{ label: "Products", url: "https://easwaaqmisr.com/products/" }],
   },
 ];
@@ -245,17 +248,18 @@ export function getAdjacentProjects(slug: string) {
 export const featuredProjects = projects.slice(0, 4);
 
 export const experience = [
-  { company: "MAAT", role: "Technical Director & Full Stack Engineer", period: "Current", current: true },
-  { company: "NAYA AL-ALAM", role: "Senior Tech Lead", period: "2023 - 2024", current: false },
-  { company: "TechieSonic", role: "Frontend Architecture Specialist", period: "2022 - 2023", current: false },
-  { company: "Techno Space", role: "Software Engineer", period: "2021 - 2022", current: false },
-  { company: "eAswaaq Misr", role: "Junior Developer", period: "2020 - 2021", current: false },
-  { company: "ITShare", role: "Internship & Research", period: "Early Days", current: false },
+  { company: "MAAT", role: "Technical Team Lead", period: "Feb 2025 - Present", current: true },
+  { company: "NAYA AL-ALAM", role: "Full Stack Team Lead", period: "Sep 2023 - Oct 2025", current: false },
+  { company: "TechieSonic", role: "Full Stack Engineer", period: "Feb 2023 - Oct 2023", current: false },
+  { company: "Techno Space", role: "Mentor", period: "Feb 2023 - Apr 2023", current: false },
+  { company: "Techno Space", role: "Full Stack Engineer", period: "Oct 2022 - Feb 2023", current: false },
+  { company: "eAswaaq Misr", role: "Full Stack Engineer (Internship)", period: "Jul 2022 - Sep 2022", current: false },
+  { company: "ITShare", role: "Full Stack Engineer (Internship)", period: "May 2021 - Nov 2021", current: false },
 ];
 
 export const stats = [
   { value: "9", label: "Projects Delivered" },
-  { value: "4+", label: "Years Experience" },
-  { value: "2", label: "Teams Led" },
+  { value: SITE.yearsExperience, label: "Years Experience" },
+  { value: "3", label: "Teams Led" },
   { value: "MENA", label: "Expertise" },
 ] as const;

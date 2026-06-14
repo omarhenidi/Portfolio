@@ -88,7 +88,7 @@ export default function ContactForm() {
           {status === "sent" ? "Message Sent" : "Send Message"}
         </button>
         <p className="mt-4 font-body text-body-md text-on-surface-variant" aria-live="polite" role="status">
-          {statusMessage || `Submit opens your email app — messages go to ${SITE.email}.`}
+          {statusMessage || `Submit opens your email app. Messages go to ${SITE.email}.`}
         </p>
       </div>
     </form>

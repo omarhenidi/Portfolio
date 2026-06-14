@@ -1,23 +1,24 @@
 import RevealOnScroll from "@/components/ui/RevealOnScroll";
+import SectionHeader from "@/components/ui/SectionHeader";
 import TechTag from "@/components/ui/TechTag";
 
 const PILLARS = [
   {
     index: "01",
     title: "Frontend",
-    description: "Product-grade interfaces with performance, accessibility, and design systems built in.",
+    description: "Interfaces that load fast, work for everyone, and match the design.",
     skills: ["React", "Next.js", "TypeScript", "Tailwind CSS"],
   },
   {
     index: "02",
     title: "Backend",
-    description: "Reliable APIs, data modeling, and Laravel services engineered for scale and clarity.",
+    description: "APIs and databases in Laravel, structured to hold up as the product grows.",
     skills: ["PHP Laravel", "MySQL", "REST APIs", "Auth & RBAC"],
   },
   {
     index: "03",
     title: "Leadership",
-    description: "Technical direction from architecture decisions through team delivery and code quality.",
+    description: "Architecture calls, code reviews, and keeping the team pointed at what ships.",
     skills: ["System Design", "Design Systems", "Team Leadership", "Code Review"],
   },
 ] as const;
@@ -25,34 +26,24 @@ const PILLARS = [
 const CAPABILITIES = [
   { label: "Full Stack Delivery", detail: "End-to-end ownership" },
   { label: "Production Systems", detail: "SaaS · Commerce · Fintech" },
-  { label: "MENA Experience", detail: "Cross-functional teams" },
+  { label: "MENA Experience", detail: "Teams across the region" },
 ] as const;
 
 export default function TechnicalFoundation() {
   return (
     <section
-      className="overflow-hidden border-t border-outline-variant bg-surface-container-lowest px-6 py-section-padding-mobile md:px-margin-desktop md:py-section-padding-desktop"
+      className="border-t border-outline-variant bg-surface-container-lowest px-6 py-section-padding-mobile md:px-margin-desktop md:py-section-padding-desktop"
       aria-labelledby="technical-foundation-heading"
     >
-      <div className="mx-auto max-w-7xl">
+      <div className="w-full">
         <RevealOnScroll>
-          <div className="mb-stack-lg flex flex-col gap-stack-md md:mb-16 md:flex-row md:items-end md:justify-between">
-            <div className="max-w-2xl">
-              <span className="mb-stack-sm block font-ui text-ui-label uppercase tracking-[0.3em] text-primary">
-                Engineering Depth
-              </span>
-              <h2
-                id="technical-foundation-heading"
-                className="font-display text-display-lg-mobile text-on-surface md:text-display-lg"
-              >
-                Technical Foundation
-              </h2>
-            </div>
-            <p className="max-w-md font-body text-body-md text-on-surface-variant md:text-right">
-              A balanced stack across frontend craft, backend rigor, and technical leadership —
-              built for products that ship and scale.
-            </p>
-          </div>
+          <SectionHeader
+            eyebrow="Engineering Depth"
+            title="Technical Foundation"
+            description="Frontend, backend, and team leadership. Built for products that actually ship."
+            index="04"
+            titleId="technical-foundation-heading"
+          />
         </RevealOnScroll>
 
         <div className="grid grid-cols-1 gap-gutter md:grid-cols-12">
@@ -65,12 +56,12 @@ export default function TechnicalFoundation() {
               <article className="stack-pillar group flex h-full flex-col border border-outline-variant bg-surface-container-low p-stack-lg transition-colors duration-300 hover:border-primary-container md:p-8">
                 <div className="mb-stack-md flex items-start justify-between gap-4">
                   <div>
-                    <span className="mb-3 block font-mono text-tech-tag text-primary/70">
+                    <span className="mb-3 block font-mono text-tech-tag uppercase tracking-widest text-primary/70">
                       {pillar.index}
                     </span>
                     <h3 className="font-display text-headline-md text-on-surface">{pillar.title}</h3>
                   </div>
-                  <div className="h-px w-12 shrink-0 bg-outline-variant transition-all duration-500 group-hover:w-20 group-hover:bg-primary-container" />
+                  <div className="section-card-line h-px w-12 shrink-0 bg-outline-variant transition-all duration-500 group-hover:w-20 group-hover:bg-primary-container" />
                 </div>
                 <p className="mb-stack-lg flex-1 font-body text-body-md leading-relaxed text-on-surface-variant">
                   {pillar.description}
@@ -103,7 +94,9 @@ export default function TechnicalFoundation() {
                   <span className="font-ui text-ui-label uppercase tracking-widest text-primary">
                     {label}
                   </span>
-                  <span className="font-mono text-tech-tag text-on-surface-variant">{detail}</span>
+                  <span className="font-mono text-tech-tag uppercase tracking-wide text-on-surface-variant">
+                    {detail}
+                  </span>
                 </div>
               ))}
             </div>

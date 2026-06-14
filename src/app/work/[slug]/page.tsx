@@ -2,12 +2,14 @@ import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import JsonLd from "@/components/seo/JsonLd";
-import { ProjectFooter } from "@/components/layout/Footer";
+import CtaBand from "@/components/ui/CtaBand";
+import ArticleHeader from "@/components/ui/ArticleHeader";
 import Icon from "@/components/ui/Icon";
 import TechTag from "@/components/ui/TechTag";
 import { SITE } from "@/lib/constants";
 import { getAdjacentProjects, getProject, getProjectImageBackground, projects } from "@/lib/projects";
 import { breadcrumbJsonLd, buildPageMetadata, creativeWorkJsonLd } from "@/lib/seo";
+import Footer from "@/components/layout/Footer";
 
 export function generateStaticParams() {
   return projects.map((p) => ({ slug: p.slug }));
@@ -53,7 +55,7 @@ export default async function ProjectDetailPage({ params }: ProjectDetailPagePro
   ].filter(Boolean) as { label: string; value: string }[];
 
   return (
-    <main className="pt-20 md:pt-24">
+    <main className="page-main">
       <JsonLd
         data={[
           creativeWorkJsonLd(project),
@@ -65,9 +67,17 @@ export default async function ProjectDetailPage({ params }: ProjectDetailPagePro
         ]}
       />
 
-      <section className="mb-stack-lg w-full px-6 md:px-margin-desktop">
+      <section className="px-6 pb-stack-lg md:px-margin-desktop">
+        <Link href="/work" className="section-cta-link group mb-stack-lg inline-flex items-center gap-2">
+          <Icon
+            name="arrow_forward"
+            size={16}
+            className="rotate-180 transition-transform duration-300 group-hover:-translate-x-1"
+          />
+          Back to work
+        </Link>
         <div
-          className="group relative aspect-[16/9] w-full overflow-hidden md:aspect-[21/9]"
+          className="group relative aspect-[16/9] w-full overflow-hidden border border-outline-variant md:aspect-[21/9]"
           style={{ backgroundColor: getProjectImageBackground(project) }}
         >
           <Image
@@ -85,12 +95,21 @@ export default async function ProjectDetailPage({ params }: ProjectDetailPagePro
         </div>
       </section>
 
-      <section className="mb-section-padding-mobile px-6 md:mb-section-padding-desktop md:px-margin-desktop">
-        <div className="mx-auto max-w-7xl border-b border-outline-variant pb-stack-lg">
-          <h1 className="mb-stack-md font-display text-[72px] leading-none text-on-surface md:text-display-xl">
+      <section className="border-b border-outline-variant/30 px-6 pb-stack-lg md:px-margin-desktop">
+        <div className="w-full">
+          <div className="mb-stack-sm flex items-center gap-stack-md">
+            <span
+              className="section-accent-line hidden h-px w-12 shrink-0 bg-primary-container md:block"
+              aria-hidden="true"
+            />
+            <span className="font-ui text-ui-label uppercase tracking-[0.3em] text-primary">
+              Case Study
+            </span>
+          </div>
+          <h1 className="mb-stack-md font-display text-display-lg-mobile leading-[0.95] text-on-surface md:text-display-lg">
             {project.title}
           </h1>
-          <div className="flex flex-wrap items-center gap-x-12 gap-y-4 font-ui text-ui-label uppercase tracking-widest text-on-surface-variant">
+          <div className="flex flex-wrap items-center gap-x-8 gap-y-3 font-ui text-ui-label uppercase tracking-widest text-on-surface-variant">
             {metaItems.map(({ label, value }) => (
               <div key={label} className="flex items-center gap-2">
                 <span className="text-primary">{label}</span>
@@ -101,12 +120,12 @@ export default async function ProjectDetailPage({ params }: ProjectDetailPagePro
         </div>
       </section>
 
-      <section className="mb-section-padding-mobile px-6 md:mb-section-padding-desktop md:px-margin-desktop">
-        <div className="mx-auto grid max-w-7xl grid-cols-12 gap-gutter">
-          <div className="col-span-12 space-y-stack-lg md:space-y-section-padding-mobile lg:col-span-8">
+      <section className="page-section">
+        <div className="grid w-full grid-cols-12 gap-gutter">
+          <div className="col-span-12 space-y-stack-xl lg:col-span-8">
             <article>
-              <h2 className="mb-stack-lg font-display text-headline-md text-on-surface">Overview</h2>
-              <div className="max-w-3xl space-y-stack-md font-body text-body-lg text-on-surface-variant">
+              <ArticleHeader eyebrow="Summary" title="Overview" />
+              <div className="max-w-3xl space-y-stack-md font-body text-body-lg leading-relaxed text-on-surface-variant">
                 {project.overview ? (
                   project.overview.map((paragraph) => (
                     <p key={paragraph.slice(0, 40)}>{paragraph}</p>
@@ -119,16 +138,17 @@ export default async function ProjectDetailPage({ params }: ProjectDetailPagePro
 
             {project.architecture && (
               <article>
-                <h2 className="mb-stack-lg font-display text-headline-md text-on-surface">Architecture</h2>
-                <div className="grid grid-cols-1 gap-stack-lg md:grid-cols-2">
+                <ArticleHeader eyebrow="System" title="Architecture" />
+                <div className="grid grid-cols-1 gap-gutter md:grid-cols-2">
                   {project.architecture.map(({ icon, title, description }) => (
-                    <div
-                      key={title}
-                      className="bento-card-bordered bg-surface-container-low p-stack-lg"
-                    >
+                    <div key={title} className="surface-card p-stack-lg">
                       <Icon name={icon} size={32} className="mb-4 text-primary" />
-                      <h3 className="mb-stack-sm font-ui text-ui-label uppercase text-on-surface">{title}</h3>
-                      <p className="font-body text-body-md text-on-surface-variant">{description}</p>
+                      <h3 className="mb-stack-sm font-ui text-ui-label uppercase text-on-surface">
+                        {title}
+                      </h3>
+                      <p className="font-body text-body-md leading-relaxed text-on-surface-variant">
+                        {description}
+                      </p>
                     </div>
                   ))}
                 </div>
@@ -137,12 +157,16 @@ export default async function ProjectDetailPage({ params }: ProjectDetailPagePro
 
             {project.results && (
               <article>
-                <h2 className="mb-stack-lg font-display text-headline-md text-on-surface">Key Results</h2>
+                <ArticleHeader eyebrow="Outcomes" title="Key Results" />
                 <div className="grid grid-cols-1 gap-gutter sm:grid-cols-2 md:grid-cols-3">
                   {project.results.map(({ value, label }) => (
-                    <div key={label} className="border-l-2 border-primary py-2 pl-6">
-                      <div className="font-display text-display-lg text-primary">{value}</div>
-                      <div className="font-ui text-ui-label uppercase text-on-surface-variant">{label}</div>
+                    <div key={label} className="surface-card border-l-2 border-l-primary p-stack-md pl-6">
+                      <div className="font-display text-display-lg-mobile text-primary md:text-display-lg">
+                        {value}
+                      </div>
+                      <div className="font-ui text-ui-label uppercase tracking-widest text-on-surface-variant">
+                        {label}
+                      </div>
                     </div>
                   ))}
                 </div>
@@ -151,12 +175,10 @@ export default async function ProjectDetailPage({ params }: ProjectDetailPagePro
 
             {project.dashboardFeatures && (
               <article>
-                <h2 className="mb-stack-lg font-display text-headline-md text-on-surface">
-                  Dashboard Modules
-                </h2>
+                <ArticleHeader eyebrow="Product" title="Dashboard Modules" />
                 <p className="mb-stack-lg max-w-3xl font-body text-body-md text-on-surface-variant">
-                  The admin dashboard covers end-to-end operations across sourcing, sales, logistics,
-                  CRM, and team coordination.
+                  The admin dashboard covers end-to-end operations across sourcing, sales,
+                  logistics, CRM, and team coordination.
                 </p>
                 <div className="flex flex-wrap gap-2">
                   {project.dashboardFeatures.map((feature) => (
@@ -169,10 +191,8 @@ export default async function ProjectDetailPage({ params }: ProjectDetailPagePro
 
           <aside className="col-span-12 lg:col-span-4">
             <div className="sticky top-32 space-y-stack-lg">
-              <div className="bento-card-bordered bg-surface-container-low p-stack-lg">
-                <h2 className="mb-stack-md font-ui text-ui-label uppercase tracking-widest text-primary">
-                  Tech Stack
-                </h2>
+              <div className="surface-card p-stack-lg">
+                <ArticleHeader eyebrow="Built with" title="Tech Stack" className="mb-stack-md" />
                 <div className="flex flex-wrap gap-2">
                   {stack.map((tech) => (
                     <TechTag key={tech}>{tech}</TechTag>
@@ -188,7 +208,7 @@ export default async function ProjectDetailPage({ params }: ProjectDetailPagePro
                       href={url}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="group flex items-center justify-between border border-outline px-6 py-4 transition-all duration-300 hover:border-primary-container hover:bg-primary-container"
+                      className="surface-card group flex items-center justify-between px-6 py-4 transition-colors hover:border-primary-container hover:bg-primary-container"
                     >
                       <span className="font-ui text-ui-label uppercase tracking-widest text-on-surface transition-colors group-hover:text-on-primary-container">
                         {label}
@@ -204,7 +224,7 @@ export default async function ProjectDetailPage({ params }: ProjectDetailPagePro
                     <div
                       key={label}
                       aria-disabled="true"
-                      title="Private — authentication required"
+                      title="Private. Authentication required."
                       className="flex cursor-not-allowed items-center justify-between border border-outline-variant bg-surface-container-high px-6 py-4 opacity-60"
                     >
                       <span className="font-ui text-ui-label uppercase tracking-widest text-on-surface-variant">
@@ -220,7 +240,7 @@ export default async function ProjectDetailPage({ params }: ProjectDetailPagePro
                       href={project.repoUrl}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="group flex items-center justify-between border border-outline px-6 py-4 transition-all duration-300 hover:bg-white/5"
+                      className="surface-card group flex items-center justify-between px-6 py-4"
                     >
                       <span className="font-ui text-ui-label uppercase tracking-widest text-on-surface">
                         GitHub Repository
@@ -233,7 +253,7 @@ export default async function ProjectDetailPage({ params }: ProjectDetailPagePro
 
               <Link
                 href="/contact"
-                className="group flex items-center justify-center gap-2 bg-primary-container px-6 py-4 font-ui text-ui-label uppercase tracking-widest text-on-primary-container transition-opacity hover:opacity-90"
+                className="hero-cta-primary flex items-center justify-center gap-2"
               >
                 Discuss a similar project
                 <Icon name="arrow_forward" size={18} />
@@ -278,7 +298,12 @@ export default async function ProjectDetailPage({ params }: ProjectDetailPagePro
         </div>
       </section>
 
-      <ProjectFooter />
+      <CtaBand
+        eyebrow="Similar project?"
+        title="Let's build something together."
+        description="Tell me about your product and we can figure out the right approach."
+      />
+      <Footer variant="default" />
     </main>
   );
 }

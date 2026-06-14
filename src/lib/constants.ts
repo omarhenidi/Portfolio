@@ -1,14 +1,30 @@
+/** Career start: ITShare internship (May 2021). Used for auto-incrementing years of experience. */
+export const CAREER_START_YEAR = 2021;
+export const CAREER_START_MONTH = 5;
+
+export function getYearsExperience(referenceDate = new Date()): string {
+  let years = referenceDate.getFullYear() - CAREER_START_YEAR;
+  if (referenceDate.getMonth() + 1 < CAREER_START_MONTH) {
+    years -= 1;
+  }
+  return `${Math.max(years, 1)}+`;
+}
+
+const yearsExperience = getYearsExperience();
+
 export const SITE = {
   name: "Omar Henidi",
   nameAr: "عمر هنيدي",
-  title: "Technical Director & Full Stack Engineer",
+  title: "Full Stack Engineer & Technical Team Lead",
+  heroTagline: "Building and leading scalable web products.",
+  yearsExperience,
   seoDescription:
-    "Official portfolio of Omar Henidi (عمر هنيدي) — Technical Director & Full Stack Engineer in Cairo, Egypt. View projects, experience, and connect on LinkedIn, GitHub, Instagram, and X.",
+    "Portfolio of Omar Henidi (عمر هنيدي), Full Stack Engineer and Technical Team Lead in Cairo, Egypt. Projects, work history, and links to LinkedIn, GitHub, Instagram, and X.",
   url: process.env.NEXT_PUBLIC_SITE_URL ?? "https://omarhenidi.com",
   email: "omarhenidi@gmail.com",
   phone: "+201004753538",
   location: "Egypt, Cairo",
-  availability: "Open for new projects — H2 2026",
+  availability: "Open for new projects, H2 2026",
   socialUsername: "omarhenidi",
   alternateNames: ["عمر هنيدي", "Omar Henidi", "عمر هنيدى"] as const,
   personSameAs: [
