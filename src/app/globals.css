@@ -39,6 +39,12 @@
 }
 
 @layer components {
+  .portrait-photo {
+    display: block;
+    max-width: 100%;
+    height: auto;
+  }
+
   .nav-link {
     @apply relative;
   }
@@ -310,14 +316,6 @@
 
   .nav-link-item:hover .line-animation {
     @apply w-[100px];
-  }
-
-  .bento-card-bordered {
-    @apply border border-[#334155] transition-colors duration-300;
-  }
-
-  .bento-card-bordered:hover {
-    @apply border-primary-container;
   }
 
   .stack-pillar:hover {

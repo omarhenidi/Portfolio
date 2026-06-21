@@ -41,12 +41,7 @@ export default async function ProjectDetailPage({ params }: ProjectDetailPagePro
   const { prev, next } = getAdjacentProjects(slug);
   const stack = project.stack ?? project.tags;
   const imageFit = project.imageFit ?? "cover";
-  const liveSites: { label: string; url: string }[] =
-    project.sites ??
-    [
-      project.demoUrl ? { label: "Live Demo", url: project.demoUrl } : null,
-      project.adminDemoUrl ? { label: "Admin Dashboard", url: project.adminDemoUrl } : null,
-    ].filter((site): site is { label: string; url: string } => site !== null);
+  const liveSites = project.sites ?? [];
   const metaItems = [
     project.role && { label: "Role", value: project.role },
     project.timeline && { label: "Timeline", value: project.timeline },
@@ -200,7 +195,7 @@ export default async function ProjectDetailPage({ params }: ProjectDetailPagePro
                 </div>
               </div>
 
-              {(liveSites.length > 0 || project.privateSites?.length || project.repoUrl) && (
+              {(liveSites.length > 0 || project.privateSites?.length) && (
                 <div className="flex flex-col gap-stack-sm">
                   {liveSites.map(({ label, url }) => (
                     <a
@@ -235,19 +230,6 @@ export default async function ProjectDetailPage({ params }: ProjectDetailPagePro
                       </span>
                     </div>
                   ))}
-                  {project.repoUrl && (
-                    <a
-                      href={project.repoUrl}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="surface-card group flex items-center justify-between px-6 py-4"
-                    >
-                      <span className="font-ui text-ui-label uppercase tracking-widest text-on-surface">
-                        GitHub Repository
-                      </span>
-                      <Icon name="code" size={20} className="text-on-surface-variant" />
-                    </a>
-                  )}
                 </div>
               )}
 

@@ -8,7 +8,10 @@ const requiredOutputs = [
   "out/manifest.webmanifest",
   "out/og-image.png",
   "out/icon.png",
+  "out/images/portrait.jpg",
   "out/images/portrait.webp",
+  "out/images/portrait-2x.webp",
+  "out/.htaccess",
 ];
 
 function cleanBuildCache() {

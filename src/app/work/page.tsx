@@ -4,13 +4,12 @@ import WorkGrid from "@/components/work/WorkGrid";
 import CtaBand from "@/components/ui/CtaBand";
 import PageHeader from "@/components/ui/PageHeader";
 import JsonLd from "@/components/seo/JsonLd";
-import { SITE } from "@/lib/constants";
+import { SITE, PAGE_COPY } from "@/lib/constants";
 import { buildPageMetadata, breadcrumbJsonLd } from "@/lib/seo";
 
 export const metadata: Metadata = buildPageMetadata({
   title: `Work | ${SITE.name} (${SITE.nameAr})`,
-  description:
-    "Selected projects by Omar Henidi (عمر هنيدي): SaaS, e-commerce, fintech, and EdTech work as a full stack engineer and tech lead.",
+  description: PAGE_COPY.workDescription,
   path: "/work",
 });
 

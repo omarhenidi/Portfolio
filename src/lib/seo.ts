@@ -29,7 +29,8 @@ export function personHeadJsonLd() {
     "@type": "Person",
     name: SITE.name,
     url: absolutePageUrl("/"),
-    image: absoluteUrl(SITE.icon),
+    image: absoluteUrl(SITE.image),
+    jobTitle: SITE.title,
     sameAs: [...SITE.personSameAs],
   };
 }
@@ -45,7 +46,7 @@ export const defaultKeywords = [
   "Omar Henidi Instagram",
   "عمر هنيدي مهندس",
   "Full Stack Engineer",
-  "Technical Team Lead",
+  "Technical Director",
   "Full Stack Engineering",
   "Technical Leadership",
   "Backend Development",

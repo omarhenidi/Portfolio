@@ -2,13 +2,12 @@ import type { Metadata } from "next";
 import ContactForm from "@/components/contact/ContactForm";
 import Footer from "@/components/layout/Footer";
 import PageHeader from "@/components/ui/PageHeader";
-import { SITE, SOCIAL_LINKS } from "@/lib/constants";
+import { SITE, SOCIAL_LINKS, PAGE_COPY } from "@/lib/constants";
 import { buildPageMetadata } from "@/lib/seo";
 
 export const metadata: Metadata = buildPageMetadata({
   title: `Contact ${SITE.name} (${SITE.nameAr})`,
-  description:
-    "Get in touch with Omar Henidi (عمر هنيدي) for full stack engineering and technical leadership projects in Cairo and worldwide.",
+  description: PAGE_COPY.contactDescription,
   path: "/contact",
 });
 
@@ -20,7 +19,7 @@ export default function ContactPage() {
           <PageHeader
             eyebrow="Reach out"
             title="Contact"
-            description="Working on something and need a developer or tech lead? I&apos;m open to new projects. Send a message and tell me what you&apos;re building."
+            description={PAGE_COPY.contactIntro}
           />
         </div>
       </section>

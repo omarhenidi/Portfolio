@@ -15,12 +15,9 @@ export type Project = {
   role?: string;
   timeline?: string;
   status?: string;
-  demoUrl?: string;
-  adminDemoUrl?: string;
   sites?: { label: string; url: string }[];
   privateSites?: { label: string }[];
   dashboardFeatures?: string[];
-  repoUrl?: string;
   overview?: string[];
   architecture?: { icon: IconName; title: string; description: string }[];
   results?: { value: string; label: string }[];
@@ -47,7 +44,7 @@ export const projects: Project[] = [
     image: "/images/projects/maat.webp",
     imageFit: "contain",
     imageBackground: "#ffffff",
-    role: "Technical Team Lead",
+    role: "Technical Director",
     timeline: "Feb 2025 - Present",
     status: "Live Release",
     sites: [{ label: "Consumer Site", url: "https://maat.vip/" }],
@@ -69,7 +66,7 @@ export const projects: Project[] = [
     ],
     overview: [
       "MAAT Group helps businesses import from China. The public site at maat.vip walks clients through sourcing, quality control, logistics, and cost estimates. The admin dashboard handles the day-to-day work: products, quotes, orders, clients, suppliers, and more.",
-      "As Technical Team Lead, I lead enterprise system setup and deployment, work with other teams to integrate solutions, and keep both platforms stable, fast, and secure.",
+      "As Technical Director, I lead enterprise system setup and deployment, work with other teams to integrate solutions, and keep both platforms stable, fast, and secure.",
     ],
     architecture: [
       {
@@ -248,7 +245,7 @@ export function getAdjacentProjects(slug: string) {
 export const featuredProjects = projects.slice(0, 4);
 
 export const experience = [
-  { company: "MAAT", role: "Technical Team Lead", period: "Feb 2025 - Present", current: true },
+  { company: "MAAT Group", role: "Technical Director", period: "Feb 2025 - Present", current: true },
   { company: "NAYA AL-ALAM", role: "Full Stack Team Lead", period: "Sep 2023 - Oct 2025", current: false },
   { company: "TechieSonic", role: "Full Stack Engineer", period: "Feb 2023 - Oct 2023", current: false },
   { company: "Techno Space", role: "Mentor", period: "Feb 2023 - Apr 2023", current: false },
@@ -260,6 +257,6 @@ export const experience = [
 export const stats = [
   { value: "9", label: "Projects Delivered" },
   { value: SITE.yearsExperience, label: "Years Experience" },
-  { value: "3", label: "Teams Led" },
+  { value: "2", label: "Teams Led" },
   { value: "MENA", label: "Expertise" },
 ] as const;

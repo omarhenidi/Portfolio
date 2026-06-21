@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-import Image from "next/image";
 import Link from "next/link";
 import Footer from "@/components/layout/Footer";
 import JsonLd from "@/components/seo/JsonLd";
@@ -7,16 +6,17 @@ import ArticleHeader from "@/components/ui/ArticleHeader";
 import CtaBand from "@/components/ui/CtaBand";
 import Icon from "@/components/ui/Icon";
 import PageHeader from "@/components/ui/PageHeader";
+import PortraitImage from "@/components/ui/PortraitImage";
 import ProfileIdentity from "@/components/ui/ProfileIdentity";
 import SectionHeader from "@/components/ui/SectionHeader";
 import TechTag from "@/components/ui/TechTag";
-import { SITE } from "@/lib/constants";
+import { SITE, PAGE_COPY } from "@/lib/constants";
 import { buildPageMetadata, breadcrumbJsonLd } from "@/lib/seo";
 import { experience, stats } from "@/lib/projects";
 
 export const metadata: Metadata = buildPageMetadata({
   title: `About | ${SITE.name} - ${SITE.nameAr}`,
-  description: `${SITE.name} (${SITE.nameAr}), ${SITE.title} in Cairo, Egypt. Full stack product work, technical strategy, and team leadership across the MENA region.`,
+  description: PAGE_COPY.aboutDescription,
   path: "/about",
 });
 
@@ -40,19 +40,15 @@ export default function AboutPage() {
             className="mb-stack-lg md:mb-12"
           />
           <div className="grid grid-cols-1 items-stretch gap-gutter lg:grid-cols-12">
-            <div className="surface-card group relative overflow-hidden p-2 lg:col-span-5 lg:min-h-[520px] xl:min-h-[640px]">
-              <div className="relative aspect-[4/5] overflow-hidden bg-surface-container-low lg:absolute lg:inset-2 lg:aspect-auto lg:h-[calc(100%-1rem)]">
-                <Image
-                  src={SITE.image}
-                  alt={`${SITE.name} (${SITE.nameAr}), ${SITE.title} portrait`}
-                  width={SITE.imageWidth}
-                  height={SITE.imageHeight}
+            <figure className="surface-card relative overflow-hidden p-2 lg:col-span-5">
+              <div className="relative mx-auto w-full max-w-[682px] bg-surface-container-low">
+                <PortraitImage
                   priority
-                  sizes="(max-width: 1024px) 100vw, 42vw"
-                  className="h-full w-full object-cover object-top grayscale transition-all duration-700 group-hover:scale-105 group-hover:grayscale-0"
+                  sizes="(max-width: 1024px) 100vw, min(42vw, 682px)"
+                  className="portrait-photo aspect-[682/1024] h-auto w-full object-cover object-[center_8%]"
                 />
               </div>
-            </div>
+            </figure>
 
             <div className="flex flex-col gap-stack-lg lg:col-span-7 lg:gap-stack-xl">
               <ProfileIdentity className="hidden lg:block" />
@@ -75,7 +71,7 @@ export default function AboutPage() {
                 </p>
                 <p className="font-body text-body-lg leading-relaxed text-on-surface-variant md:text-[1.125rem] md:leading-[1.8] lg:text-[1.2rem] lg:leading-[1.85]">
                   Based in Cairo, I work with local teams and remote clients. Whether I&apos;m
-                  leading a squad or hands-on in the codebase, I care about clear communication,
+                  leading teams or hands-on in the codebase, I care about clear communication,
                   sensible trade-offs, and shipping work that holds up after launch.
                 </p>
               </div>
@@ -129,7 +125,7 @@ export default function AboutPage() {
 
       <section className="page-section">
         <div className="w-full">
-          <SectionHeader eyebrow="Career" title="Professional Journey" index="02" />
+          <SectionHeader eyebrow="Career" title="Professional Journey" />
           <div className="relative mx-auto max-w-4xl">
             <div className="timeline-line absolute left-4 hidden h-full md:left-1/2 md:block md:-translate-x-1/2" />
             <div className="flex flex-col gap-12 md:gap-24">

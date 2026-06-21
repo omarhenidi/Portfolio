@@ -31,7 +31,8 @@ export default function PhilosophySection() {
           <div className="grid grid-cols-12 gap-gutter">
             <p className="col-span-12 font-body text-body-lg leading-relaxed text-on-surface-variant md:col-span-8">
               For the past {SITE.yearsExperience} years I&apos;ve worked where engineering meets
-              design, mostly leading front-end work for startups and larger teams. I like clean
+              design, leading full stack teams and products for startups and larger organizations.
+              I like clean
               layouts, readable code, and products that feel considered without getting in the
               way.
             </p>
