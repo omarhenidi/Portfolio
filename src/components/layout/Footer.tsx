@@ -25,7 +25,7 @@ type FooterProps = {
 export default function Footer({ variant = "default" }: FooterProps) {
   if (variant === "home") {
     return (
-      <footer className="border-t border-outline-variant bg-hero-band px-6 py-section-padding-mobile md:px-margin-desktop md:py-section-padding-desktop">
+      <footer className="border-t border-outline-variant bg-surface-container-low px-6 py-section-padding-mobile md:px-margin-desktop md:py-section-padding-desktop">
         <div className="w-full">
           <div className="mb-stack-lg grid grid-cols-12 items-end gap-gutter md:mb-16">
             <div className="col-span-12 lg:col-span-8">

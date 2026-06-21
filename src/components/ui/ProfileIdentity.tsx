@@ -2,20 +2,23 @@ import { SITE } from "@/lib/constants";
 
 type ProfileIdentityProps = {
   className?: string;
+  showEyebrow?: boolean;
 };
 
-export default function ProfileIdentity({ className = "" }: ProfileIdentityProps) {
+export default function ProfileIdentity({ className = "", showEyebrow = true }: ProfileIdentityProps) {
   return (
-    <header className={`border-b border-outline-variant/25 pb-stack-lg ${className}`}>
-      <div className="mb-stack-md flex items-center gap-stack-md">
-        <span
-          className="section-accent-line h-px w-12 shrink-0 bg-primary-container"
-          aria-hidden="true"
-        />
-        <span className="font-ui text-ui-label uppercase tracking-[0.3em] text-primary">
-          Profile
-        </span>
-      </div>
+    <header className={`border-b border-outline-variant/25 pb-stack-md lg:pb-stack-lg ${className}`}>
+      {showEyebrow && (
+        <div className="mb-stack-md flex items-center gap-stack-md">
+          <span
+            className="section-accent-line h-px w-12 shrink-0 bg-primary-container"
+            aria-hidden="true"
+          />
+          <span className="font-ui text-ui-label uppercase tracking-[0.3em] text-primary">
+            Profile
+          </span>
+        </div>
+      )}
 
       <div className="space-y-2">
         <p className="font-display text-[clamp(2rem,4vw,3rem)] leading-[0.95] tracking-tight text-on-surface">

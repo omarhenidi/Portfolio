@@ -14,9 +14,9 @@ const requiredOutputs = [
   "out/.htaccess",
 ];
 
-function cleanBuildCache() {
-  if (existsSync(".next")) {
-    rmSync(".next", { recursive: true, force: true });
+function removeDir(path) {
+  if (existsSync(path)) {
+    rmSync(path, { recursive: true, force: true });
   }
 }
 
@@ -34,7 +34,8 @@ function verifyExport() {
   }
 }
 
-cleanBuildCache();
+removeDir("out");
+removeDir(".next");
 execSync("next build", { stdio: "inherit" });
 copyDeployAssets();
 verifyExport();

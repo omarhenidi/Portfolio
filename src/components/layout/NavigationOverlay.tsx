@@ -23,7 +23,7 @@ export default function NavigationOverlay({ open, onClose }: NavigationOverlayPr
 
   return (
     <div
-      className="fixed inset-0 z-[100] flex h-[100dvh] w-full flex-col overflow-hidden bg-hero-band"
+      className="fixed inset-0 z-[100] flex h-[100dvh] w-full flex-col overflow-hidden bg-background"
       role="dialog"
       aria-modal="true"
       aria-label="Navigation menu"

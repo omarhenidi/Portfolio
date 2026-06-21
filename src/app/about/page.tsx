@@ -39,44 +39,44 @@ export default function AboutPage() {
             descriptionVariant="compact"
             className="mb-stack-lg md:mb-12"
           />
-          <div className="grid grid-cols-1 items-stretch gap-gutter lg:grid-cols-12">
-            <figure className="surface-card relative overflow-hidden p-2 lg:col-span-5">
-              <div className="relative mx-auto w-full max-w-[682px] bg-surface-container-low">
+          <div className="about-profile-grid grid grid-cols-1 items-stretch gap-gutter lg:grid-cols-12">
+            <figure className="surface-card relative overflow-hidden p-2 lg:col-span-5 lg:flex lg:min-h-0">
+              <div className="relative mx-auto w-full max-w-[682px] bg-surface-container-low lg:mx-0 lg:h-full lg:w-full lg:max-w-none">
                 <PortraitImage
                   priority
                   sizes="(max-width: 1024px) 100vw, min(42vw, 682px)"
-                  className="portrait-photo aspect-[682/1024] h-auto w-full object-cover object-[center_8%]"
+                  className="portrait-photo aspect-[682/1024] w-full object-cover object-[center_8%] lg:absolute lg:inset-0 lg:aspect-auto lg:h-full"
                 />
               </div>
             </figure>
 
-            <div className="flex flex-col gap-stack-lg lg:col-span-7 lg:gap-stack-xl">
-              <ProfileIdentity className="hidden lg:block" />
+            <div className="flex min-h-0 flex-col gap-stack-lg lg:col-span-7 lg:justify-between lg:gap-6 xl:gap-8">
+              <ProfileIdentity showEyebrow={false} className="shrink-0" />
 
-              <div className="space-y-stack-md lg:space-y-stack-lg">
-                <p className="font-body text-body-lg leading-relaxed text-on-surface-variant md:text-[1.125rem] md:leading-[1.8] lg:text-[1.2rem] lg:leading-[1.85]">
+              <div className="about-profile-copy flex flex-1 flex-col justify-center space-y-stack-md lg:space-y-4 xl:space-y-5">
+                <p className="about-bio-text font-body text-body-lg leading-relaxed text-on-surface-variant">
                   Most of my work has been in the MENA region, working with designers, product
                   managers, and other engineers. I try to keep the technical side tight without
                   making the product feel heavy or overbuilt.
                 </p>
-                <p className="font-body text-body-lg leading-relaxed text-on-surface-variant md:text-[1.125rem] md:leading-[1.8] lg:text-[1.2rem] lg:leading-[1.85]">
+                <p className="about-bio-text font-body text-body-lg leading-relaxed text-on-surface-variant">
                   I&apos;ve worked across the stack, from early architecture to deployment. I also
                   spend a fair amount of time mentoring, reviewing code, and helping teams stay
                   focused on what actually needs to ship.
                 </p>
-                <p className="font-body text-body-lg leading-relaxed text-on-surface-variant md:text-[1.125rem] md:leading-[1.8] lg:text-[1.2rem] lg:leading-[1.85]">
+                <p className="about-bio-text font-body text-body-lg leading-relaxed text-on-surface-variant">
                   The products I&apos;ve helped build sit in SaaS, e-commerce, and fintech. That
                   range taught me to read a brief quickly, spot what will matter in six months, and
                   build systems that can grow without a full rewrite every year.
                 </p>
-                <p className="font-body text-body-lg leading-relaxed text-on-surface-variant md:text-[1.125rem] md:leading-[1.8] lg:text-[1.2rem] lg:leading-[1.85]">
+                <p className="about-bio-text font-body text-body-lg leading-relaxed text-on-surface-variant">
                   Based in Cairo, I work with local teams and remote clients. Whether I&apos;m
                   leading teams or hands-on in the codebase, I care about clear communication,
                   sensible trade-offs, and shipping work that holds up after launch.
                 </p>
               </div>
 
-              <div className="hidden flex-wrap items-center gap-stack-lg border-t border-outline-variant/30 pt-stack-lg lg:flex">
+              <div className="flex shrink-0 flex-wrap items-center gap-stack-lg border-t border-outline-variant/30 pt-stack-lg">
                 <a
                   href={`mailto:${SITE.email}`}
                   className="font-body text-body-md text-on-surface transition-colors hover:text-primary"

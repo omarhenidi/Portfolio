@@ -9,6 +9,7 @@
     "clean": "rm -rf .next out",
     "dev": "node scripts/ensure-dev-cache.mjs && next dev --turbopack",
     "build": "node scripts/build-static.mjs",
+    "build:quick": "next build",
     "lint": "next lint"
   },
   "dependencies": {

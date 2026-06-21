@@ -7,7 +7,7 @@ import { SITE } from "@/lib/constants";
 export default function Hero() {
   return (
     <section
-      className="hero-section relative flex min-h-[100svh] min-h-[100dvh] flex-col justify-center overflow-hidden border-b border-outline-variant bg-hero-band px-6 pb-16 pt-[calc(4rem+1.5rem)] md:px-margin-desktop md:pb-20 md:pt-[calc(4.5rem+2rem)]"
+      className="hero-section relative flex min-h-[100dvh] flex-col justify-center overflow-hidden border-b border-outline-variant bg-background px-6 pb-16 pt-[calc(4rem+1.5rem)] md:px-margin-desktop md:pb-20 md:pt-[calc(4.5rem+2rem)]"
       aria-labelledby="hero-heading"
     >
       <div className="hero-glow pointer-events-none absolute inset-0 z-0" aria-hidden="true" />

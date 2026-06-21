@@ -2,9 +2,11 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { useEffect, useState } from "react";
 import BrandMark from "@/components/ui/BrandMark";
 import Icon from "@/components/ui/Icon";
 import { NAV_LINKS } from "@/lib/constants";
+import { isActivePath, isHomePath } from "@/lib/paths";
 
 type NavigationProps = {
   onMenuOpen?: () => void;
@@ -12,9 +14,28 @@ type NavigationProps = {
 
 export default function Navigation({ onMenuOpen }: NavigationProps) {
   const pathname = usePathname();
+  const [scrolled, setScrolled] = useState(false);
+  const isHome = isHomePath(pathname);
+
+  useEffect(() => {
+    const updateScrollState = () => {
+      setScrolled(window.scrollY > 8);
+    };
+
+    updateScrollState();
+    window.addEventListener("scroll", updateScrollState, { passive: true });
+    return () => window.removeEventListener("scroll", updateScrollState);
+  }, [pathname]);
+
+  const headerSurfaceClass =
+    isHome && !scrolled
+      ? "border-transparent bg-transparent"
+      : "border-outline-variant bg-background/80 backdrop-blur-md supports-[backdrop-filter]:bg-background/70";
 
   return (
-    <header className="fixed top-0 z-50 w-full border-b border-outline-variant bg-background/80 backdrop-blur-md">
+    <header
+      className={`fixed top-0 z-50 w-full border-b transition-[background-color,border-color,backdrop-filter] duration-300 ${headerSurfaceClass}`}
+    >
       <nav
         className="mx-auto grid h-16 max-w-[1600px] grid-cols-[1fr_auto] items-center px-6 md:h-[72px] md:grid-cols-[1fr_auto_1fr] md:px-margin-desktop"
         aria-label="Main navigation"
@@ -23,7 +44,7 @@ export default function Navigation({ onMenuOpen }: NavigationProps) {
 
         <ul className="hidden items-center gap-stack-lg md:flex md:justify-self-center">
           {NAV_LINKS.map(({ label, href }) => {
-            const active = pathname === href || pathname.startsWith(`${href}/`);
+            const active = isActivePath(pathname, href);
             return (
               <li key={href}>
                 <Link

@@ -81,7 +81,7 @@ export default function TechnicalFoundation() {
           ))}
 
           <RevealOnScroll delay={400} className="md:col-span-12">
-            <div className="grid grid-cols-1 gap-stack-md border border-outline-variant bg-hero-band p-stack-lg md:grid-cols-3 md:gap-0 md:p-8">
+            <div className="grid grid-cols-1 gap-stack-md border border-outline-variant bg-surface-container p-stack-lg md:grid-cols-3 md:gap-0 md:p-8">
               {CAPABILITIES.map(({ label, detail }, capIndex) => (
                 <div
                   key={label}

@@ -27,6 +27,7 @@
     }
 
     .hero-title-reveal > span > span,
+    .hero-title-letter,
     .hero-enter,
     .reveal-on-scroll {
       animation: none !important;
@@ -43,6 +44,24 @@
     display: block;
     max-width: 100%;
     height: auto;
+  }
+
+  @media (min-width: 1024px) {
+    .about-profile-grid {
+      align-items: stretch;
+    }
+
+    .about-bio-text {
+      font-size: clamp(1rem, 1.05vw, 1.125rem);
+      line-height: 1.75;
+    }
+  }
+
+  @media (min-width: 1280px) {
+    .about-bio-text {
+      font-size: 1.125rem;
+      line-height: 1.8;
+    }
   }
 
   .nav-link {
@@ -77,7 +96,6 @@
   }
 
   .hero-section {
-    min-height: 100svh;
     min-height: 100dvh;
   }
 
@@ -88,7 +106,7 @@
   }
 
   .hero-vignette {
-    background: linear-gradient(to bottom, transparent 60%, rgb(2 6 23 / 0.85) 100%);
+    background: linear-gradient(to bottom, transparent 60%, rgb(15 20 24 / 0.85) 100%);
   }
 
   .hero-accent-line {
@@ -179,11 +197,54 @@
     transform: translate3d(0, 0, 0);
   }
 
-  .hero-title-reveal > span {
+  .hero-title-reveal {
+    font-size: clamp(2.75rem, 13vw, 4.25rem);
+    line-height: 0.9;
+  }
+
+  @media (min-width: 480px) {
+    .hero-title-reveal {
+      font-size: clamp(3rem, 7.5vw, 6.25rem);
+    }
+  }
+
+  @media (min-width: 1280px) {
+    .hero-title-reveal {
+      font-size: clamp(3.5rem, 6.5vw, 6.75rem);
+    }
+  }
+
+  .hero-title-words {
+    @apply flex flex-col;
+  }
+
+  @media (min-width: 480px) {
+    .hero-title-words {
+      @apply block overflow-hidden;
+    }
+  }
+
+  .hero-title-word {
     @apply block overflow-hidden;
   }
 
-  .hero-title-reveal > span > span {
+  @media (min-width: 480px) {
+    .hero-title-word {
+      @apply inline-block;
+    }
+  }
+
+  .hero-title-space {
+    @apply hidden;
+  }
+
+  @media (min-width: 480px) {
+    .hero-title-space {
+      @apply inline-block;
+    }
+  }
+
+  .hero-title-letter {
     @apply inline-block opacity-0;
     transform: translate3d(0, 110%, 0);
     will-change: transform, opacity;
@@ -192,8 +253,8 @@
 
   @media (max-height: 720px) and (min-width: 768px) {
     .hero-section .hero-title-reveal {
-      font-size: clamp(2.5rem, 8vw, 5.5rem) !important;
-      line-height: 0.95;
+      font-size: clamp(2.5rem, 7vw, 5rem);
+      line-height: 0.92;
     }
 
     .hero-section .hero-content {
@@ -213,8 +274,8 @@
     }
 
     .hero-section .hero-title-reveal {
-      font-size: clamp(2rem, 9vw, 3.5rem) !important;
-      line-height: 0.95;
+      font-size: clamp(2.25rem, 8vw, 3.25rem);
+      line-height: 0.92;
     }
 
     .hero-section .hero-content {
@@ -233,7 +294,7 @@
       display: none;
     }
 
-    .hero-title-reveal > span > span {
+    .hero-title-letter {
       opacity: 1;
       transform: none;
       animation: none;
